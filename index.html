@@ -1,1299 +1,1576 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mohammad Yusuf Khan — Java Backend Engineer</title>
-<meta name="description" content="Java backend engineer with 3 years building production systems that move money, sync inventory, and don't fall over at 10K daily transactions. Spring Boot, Microservices, AWS." /><meta name="theme-color" content="#0a0a0a" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohammad Yusuf Khan — Java Backend Engineer</title>
+  <meta name="description"
+    content="Java backend engineer with 3 years building production systems that move money, sync inventory, and don't fall over at 10K daily transactions. Spring Boot, Microservices, AWS." />
+  <meta name="theme-color" content="#0a0a0a" />
 
-<!-- Open Graph -->
-<meta property="og:title" content="Mohammad Yusuf Khan — Java Backend Engineer" />
-<meta property="og:description" content="3 years shipping Spring Boot systems for ERP, payments, and reconciliation. Plus six production websites for real businesses." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://m-y-k.github.io/portfolio/" />
-<meta name="twitter:card" content="summary_large_image" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mohammad Yusuf Khan — Java Backend Engineer" />
+  <meta property="og:description"
+    content="3 years shipping Spring Boot systems for ERP, payments, and reconciliation. Plus six production websites for real businesses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://m-y-k.github.io/portfolio/" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-<!-- Favicon -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23020617'/><text x='50' y='72' font-family='sans-serif' font-size='64' font-weight='600' text-anchor='middle' fill='%2338bdf8'>K</text></svg>" />
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23020617'/><text x='50' y='72' font-family='sans-serif' font-size='64' font-weight='600' text-anchor='middle' fill='%2338bdf8'>K</text></svg>" />
 
-<!-- Fonts: Outfit (display) + Inter (body) + JetBrains Mono (technical UI) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Fonts: Outfit (display) + Inter (body) + JetBrains Mono (technical UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
-<style>
-  :root {
-    --bg: #020617;
-    --bg-lift: #0f172a;
-    --surface: rgba(15, 23, 42, 0.6);
-    --line: rgba(51, 65, 85, 0.4);
-    --line-strong: rgba(71, 85, 105, 0.6);
-    --text: #f8fafc;
-    --text-soft: #cbd5e1;
-    --text-mute: #487ec8;
-    --accent: #38bdf8;        /* neon blue */
-    --accent-soft: #7dd3fc;
-    --accent-deep: #0284c7;
-    --good: #10b981; /* emerald */
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-lift: #0f172a;
+      --surface: rgba(15, 23, 42, 0.6);
+      --line: rgba(51, 65, 85, 0.4);
+      --line-strong: rgba(71, 85, 105, 0.6);
+      --text: #f8fafc;
+      --text-soft: #cbd5e1;
+      --text-mute: #487ec8;
+      --accent: #38bdf8;
+      /* neon blue */
+      --accent-soft: #7dd3fc;
+      --accent-deep: #0284c7;
+      --good: #10b981;
+      /* emerald */
 
-    --heading: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+      --heading: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-    --radius: 16px;
-    --maxw: 1120px;
-    --gutter: clamp(20px, 4vw, 56px);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    /* Dynamic moving background with radial gradients for modern look */
-    background-image: 
-      radial-gradient(circle at 15% 50px, rgba(56, 189, 248, 0.15), transparent 30%), 
-      radial-gradient(circle at 85% 30vh, rgba(16, 185, 129, 0.1), transparent 30%);
-    background-attachment: fixed;
-    color: var(--text);
-    font-family: var(--body);
-    font-weight: 300;
-    font-size: 17px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-  }
-
-  /* Keep subtle film grain for texture */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 100;
-    opacity: 0.02;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  }
-
-  ::selection { background: var(--accent); color: #020617; }
-
-  a { color: inherit; text-decoration: none; }
-
-  .container {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
-  }
-
-  /* ---------- NAV ---------- */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    background: rgba(2, 6, 23, 0.7);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-inner {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 16px var(--gutter);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-  .nav-mark {
-    font-family: var(--heading);
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: var(--text);
-  }
-  .nav-mark span { color: var(--accent); }
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    font-family: var(--body);
-    font-size: 13.5px;
-    font-weight: 500;
-    color: var(--text-soft);
-  }
-  .nav-links a {
-    transition: color 0.3s ease;
-    position: relative;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0; bottom: -4px;
-    width: 0; height: 2px;
-    background: var(--accent);
-    transition: width 0.3s ease;
-  }
-  .nav-links a:hover::after { width: 100%; }
-  @media (max-width: 720px) {
-    .nav-links { display: none; }
-  }
-
-  /* ---------- HERO ---------- */
-  .hero {
-    padding: clamp(80px, 16vh, 160px) 0 clamp(64px, 12vh, 120px);
-    border-bottom: 1px solid var(--line);
-    position: relative;
-  }
-  .hero-eyebrow {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    padding: 6px 14px;
-    border-radius: 999px;
-    width: fit-content;
-  }
-  .hero-eyebrow .dot {
-    width: 8px; height: 8px;
-    background: var(--good);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
-    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2); }
-    50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-  }
-
-  .hero h1 {
-    font-family: var(--heading);
-    font-size: clamp(48px, 7vw, 92px);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    margin-bottom: 32px;
-    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  }
-  .hero h1 em {
-    font-style: normal;
-    background: linear-gradient(135deg, var(--accent-soft), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-  }
-
-  .hero-lede {
-    font-size: clamp(18px, 2.1vw, 22px);
-    line-height: 1.7;
-    color: var(--text-soft);
-    max-width: 680px;
-    margin-bottom: 48px;
-  }
-  .hero-lede strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px 64px;
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--text-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  .hero-meta div span {
-    display: block;
-    color: var(--text);
-    text-transform: none;
-    letter-spacing: 0;
-    margin-top: 8px;
-    font-family: var(--heading);
-    font-size: 17px;
-    font-weight: 500;
-  }
-  .hero-meta a {
-    transition: color 0.3s ease;
-  }
-  .hero-meta a:hover { color: var(--accent); }
-
-  /* ---------- SECTION HEADER ---------- */
-  section { padding: clamp(80px, 14vh, 140px) 0; border-bottom: 1px solid var(--line); }
-
-  .section-head {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 48px;
-    margin-bottom: 72px;
-    align-items: baseline;
-  }
-  @media (max-width: 760px) {
-    .section-head { grid-template-columns: 1fr; gap: 20px; margin-bottom: 48px; }
-  }
-  .section-num {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding-top: 12px;
-    border-top: 2px solid var(--accent);
-    width: 80px;
-  }
-  .section-title {
-    font-family: var(--heading);
-    font-size: clamp(32px, 4vw, 48px);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    font-weight: 600;
-  }
-  .section-title em {
-    font-style: normal;
-    color: var(--text-soft);
-    background: linear-gradient(135deg, var(--text), var(--text-mute));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .section-sub {
-    margin-top: 16px;
-    color: var(--text-soft);
-    font-size: 18px;
-    max-width: 600px;
-    line-height: 1.6;
-  }
-
-  /* ---------- METRICS ---------- */
-  .metrics {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-  @media (max-width: 760px) {
-    .metrics { grid-template-columns: repeat(2, 1fr); }
-  }
-  .metric {
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 40px 32px;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-  }
-  .metric:hover { 
-    transform: translateY(-8px); 
-    border-color: var(--accent);
-    box-shadow: 0 12px 32px rgba(56, 189, 248, 0.1);
-  }
-  .metric-num {
-    font-family: var(--heading);
-    font-size: clamp(40px, 5vw, 64px);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    font-weight: 600;
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, #fff, #94a3b8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .metric-num em {
-    font-family: var(--mono);
-    -webkit-text-fill-color: var(--accent);
-    font-style: normal;
-    font-size: 0.4em;
-    margin-left: 6px;
-    vertical-align: 12px;
-    font-weight: 600;
-  }
-  .metric-label {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-mute);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    line-height: 1.5;
-  }
-
-  /* ---------- WORK / PROJECTS ---------- */
-  .work-list { display: flex; flex-direction: column; gap: 24px; }
-
-  .work-item {
-    display: grid;
-    grid-template-columns: 140px 1fr 220px;
-    gap: 32px;
-    padding: 40px;
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    align-items: start;
-    transition: all 0.4s ease;
-    position: relative;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-  }
-  .work-item:hover { 
-    border-color: var(--line-strong); 
-    transform: translateY(-4px); 
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-  }
-  @media (max-width: 900px) {
-    .work-item { grid-template-columns: 1fr; gap: 20px; padding: 32px; }
-  }
-
-  .work-date {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--text-mute);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .work-body h3 {
-    font-family: var(--heading);
-    font-size: 26px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-  .work-body h3 .accent {
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .work-role {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--text-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 20px;
-  }
-  .work-bullets {
-    list-style: none;
-    color: var(--text-soft);
-  }
-  .work-bullets li {
-    padding-left: 24px;
-    position: relative;
-    margin-bottom: 12px;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-  .work-bullets li::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    top: -2px;
-    color: var(--accent);
-    font-family: var(--mono);
-    font-size: 18px;
-  }
-  .work-bullets b {
-    color: var(--text);
-    font-weight: 600;
-    background: rgba(56, 189, 248, 0.1);
-    padding: 0 4px;
-    border-radius: 4px;
-  }
-
-  .work-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-content: start;
-  }
-  .chip {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 6px 12px;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    letter-spacing: 0.02em;
-    transition: all 0.2s ease;
-  }
-  .chip:hover {
-    background: rgba(56, 189, 248, 0.15);
-    border-color: rgba(56, 189, 248, 0.5);
-    color: var(--accent);
-  }
-
-  /* ---------- PROJECTS GRID (backend) ---------- */
-  .proj-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-  @media (max-width: 800px) { .proj-grid { grid-template-columns: 1fr; } }
-
-  .proj-card {
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    transition: all 0.4s ease;
-    min-height: 320px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-  }
-  .proj-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  .proj-card:hover { 
-    transform: translateY(-8px);
-    border-color: var(--line-strong);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  }
-  .proj-card:hover::before { opacity: 1; }
-  
-  .proj-card .badge {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-  }
-  .proj-card .badge::before {
-    content: "";
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 8px var(--accent);
-  }
-  .proj-card h3 {
-    font-family: var(--heading);
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-  }
-  .proj-card h3 em {
-    font-style: normal;
-    background: linear-gradient(135deg, var(--text-soft), var(--text-mute));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .proj-card p {
-    color: var(--text-soft);
-    font-size: 16px;
-    line-height: 1.6;
-    flex-grow: 1;
-  }
-  .proj-card .stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: auto;
-  }
-
-  /* ---------- CLIENT SITES ---------- */
-  .sites-intro {
-    background: rgba(56, 189, 248, 0.05);
-    border-left: 4px solid var(--accent);
-    border-radius: 0 var(--radius) var(--radius) 0;
-    padding: 24px 32px;
-    margin-bottom: 64px;
-    color: var(--text-soft);
-    font-size: 18px;
-    max-width: 800px;
-    line-height: 1.6;
-  }
-  .sites-intro b { color: var(--text); font-weight: 500; }
-
-  .sites-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  @media (max-width: 920px) { .sites-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .sites-grid { grid-template-columns: 1fr; } }
-
-  .site {
-    background: var(--surface);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(.2,.8,.2,1);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-  }
-  .site:hover {
-    transform: translateY(-8px);
-    border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  }
-  .site-thumb {
-    aspect-ratio: 16 / 10;
-    background: var(--bg-lift);
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid var(--line);
-  }
-  .site-thumb svg { 
-    width: 100%; height: 100%; display: block; 
-    transition: transform 0.6s ease;
-  }
-  .site:hover .site-thumb svg { transform: scale(1.05); }
-
-  .site-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
-  .site-body .kind {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-mute);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: space-between;
-  }
-  .site-body .kind .live { color: var(--good); font-weight: 600; }
-  .site-body h4 {
-    font-family: var(--heading);
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-    margin-bottom: 8px;
-  }
-  .site-body p {
-    color: var(--text-soft);
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    flex-grow: 1;
-  }
-  .site-body .visit {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: auto;
-  }
-  .site-body .visit::after {
-    content: '→';
-    transition: transform 0.2s ease;
-  }
-  .site:hover .site-body .visit::after { transform: translateX(4px); }
-
-  /* ---------- TOOLKIT ---------- */
-  .toolkit {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  @media (max-width: 760px) { .toolkit { grid-template-columns: 1fr; } }
-  
-  .tool-row { 
-    background: var(--surface); 
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 32px; 
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-  }
-  .tool-row:hover {
-    border-color: var(--line-strong);
-    transform: translateY(-2px);
-  }
-  .tool-row h4 {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    font-weight: 500;
-  }
-  .tool-row .items {
-    font-family: var(--body);
-    font-size: 16px;
-    color: var(--text);
-    line-height: 1.8;
-  }
-  .tool-row .items span {
-    color: var(--text-mute);
-    margin: 0 8px;
-  }
-
-  /* ---------- MANIFESTO ---------- */
-  .manifesto {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: left;
-  }
-  .manifesto p {
-    font-family: var(--body);
-    font-size: clamp(20px, 2.4vw, 24px);
-    line-height: 1.6;
-    color: var(--text-soft);
-    margin-bottom: 32px;
-  }
-  .manifesto p:first-child::first-letter {
-    font-family: var(--heading);
-    font-size: 3.8em;
-    float: left;
-    line-height: 0.8;
-    padding: 8px 16px 0 0;
-    color: var(--accent);
-    font-weight: 600;
-  }
-  .manifesto strong { color: var(--text); font-weight: 500; }
-  .manifesto em { color: var(--accent-soft); font-style: normal; }
-  .manifesto .sig {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--text-mute);
-    margin-top: 48px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  /* ---------- CONTACT ---------- */
-  .contact {
-    border-bottom: none;
-    padding-bottom: clamp(64px, 12vh, 120px);
-  }
-  .contact-card {
-    text-align: center;
-    padding: clamp(56px, 10vh, 100px) 32px;
-    background: linear-gradient(135deg, var(--surface) 0%, rgba(2, 6, 23, 0.4) 100%);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  }
-  .contact-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, var(--accent-deep), var(--accent), var(--accent-soft));
-  }
-  .contact-eyebrow {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-  .contact h2 {
-    font-family: var(--heading);
-    font-size: clamp(40px, 6vw, 72px);
-    font-weight: 600;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-  }
-  .contact h2 em {
-    font-style: normal;
-    background: linear-gradient(135deg, var(--accent-soft), var(--accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .contact p {
-    color: var(--text-soft);
-    max-width: 500px;
-    margin: 0 auto 48px;
-    font-size: 18px;
-    line-height: 1.6;
-  }
-  .cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-  }
-  .cta {
-    font-family: var(--mono);
-    font-size: 14px;
-    padding: 16px 28px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--line-strong);
-    border-radius: 12px;
-    color: var(--text);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    letter-spacing: 0.05em;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .cta:hover {
-    border-color: rgba(56, 189, 248, 0.5);
-    color: var(--accent);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  }
-  .cta.primary {
-    background: var(--accent);
-    color: #020617;
-    border-color: var(--accent);
-    font-weight: 600;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-  }
-  .cta.primary:hover {
-    background: var(--accent-soft);
-    border-color: var(--accent-soft);
-    color: #020617;
-    box-shadow: 0 0 32px rgba(56, 189, 248, 0.5);
-  }
-
-  /* ---------- FOOTER ---------- */
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 40px 0;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-mute);
-  }
-  .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    letter-spacing: 0.05em;
-  }
-  .footer-inner a { transition: color 0.2s ease; }
-  .footer-inner a:hover { color: var(--accent); }
-
-  /* ---------- ENTRANCE ANIMATIONS ---------- */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px) scale(0.98);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal.in {
-    opacity: 1;
-    transform: none;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.001s !important;
-      transition-duration: 0.001s !important;
+      --radius: 16px;
+      --maxw: 1120px;
+      --gutter: clamp(20px, 4vw, 56px);
     }
-    .reveal { opacity: 1; transform: none; }
-  }
-</style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      /* Dynamic moving background with radial gradients for modern look */
+      background-image:
+        radial-gradient(circle at 15% 50px, rgba(56, 189, 248, 0.15), transparent 30%),
+        radial-gradient(circle at 85% 30vh, rgba(16, 185, 129, 0.1), transparent 30%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: var(--body);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* Keep subtle film grain for texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.02;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #020617;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ---------- NAV ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      background: rgba(2, 6, 23, 0.7);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 16px var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-mark {
+      font-family: var(--heading);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--text);
+    }
+
+    .nav-mark span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-family: var(--body);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-soft);
+    }
+
+    .nav-links a {
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      padding: clamp(80px, 16vh, 160px) 0 clamp(64px, 12vh, 120px);
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 6px 14px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    .hero-eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--good);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+      }
+    }
+
+    .hero h1 {
+      font-family: var(--heading);
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      margin-bottom: 32px;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    .hero-lede {
+      font-size: clamp(18px, 2.1vw, 22px);
+      line-height: 1.7;
+      color: var(--text-soft);
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+
+    .hero-lede strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px 64px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-mute);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-meta div span {
+      display: block;
+      color: var(--text);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-top: 8px;
+      font-family: var(--heading);
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .hero-meta a {
+      transition: color 0.3s ease;
+    }
+
+    .hero-meta a:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- SECTION HEADER ---------- */
+    section {
+      padding: clamp(80px, 14vh, 140px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      margin-bottom: 72px;
+      align-items: baseline;
+    }
+
+    @media (max-width: 760px) {
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 48px;
+      }
+    }
+
+    .section-num {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding-top: 12px;
+      border-top: 2px solid var(--accent);
+      width: 80px;
+    }
+
+    .section-title {
+      font-family: var(--heading);
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+    }
+
+    .section-title em {
+      font-style: normal;
+      color: var(--text-soft);
+      background: linear-gradient(135deg, var(--text), var(--text-mute));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-sub {
+      margin-top: 16px;
+      color: var(--text-soft);
+      font-size: 18px;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ---------- METRICS ---------- */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 760px) {
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .metric {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .metric:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(56, 189, 248, 0.1);
+    }
+
+    .metric-num {
+      font-family: var(--heading);
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .metric-num em {
+      font-family: var(--mono);
+      -webkit-text-fill-color: var(--accent);
+      font-style: normal;
+      font-size: 0.4em;
+      margin-left: 6px;
+      vertical-align: 12px;
+      font-weight: 600;
+    }
+
+    .metric-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-mute);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+
+    /* ---------- WORK / PROJECTS ---------- */
+    .work-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 140px 1fr 220px;
+      gap: 32px;
+      padding: 40px;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      align-items: start;
+      transition: all 0.4s ease;
+      position: relative;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .work-item:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 900px) {
+      .work-item {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 32px;
+      }
+    }
+
+    .work-date {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-mute);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .work-body h3 {
+      font-family: var(--heading);
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .work-body h3 .accent {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .work-role {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-mute);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .work-bullets {
+      list-style: none;
+      color: var(--text-soft);
+    }
+
+    .work-bullets li {
+      padding-left: 24px;
+      position: relative;
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .work-bullets li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      top: -2px;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 18px;
+    }
+
+    .work-bullets b {
+      color: var(--text);
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+
+    .work-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .chip {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+      transition: all 0.2s ease;
+    }
+
+    .chip:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.5);
+      color: var(--accent);
+    }
+
+    /* ---------- PROJECTS GRID (backend) ---------- */
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 800px) {
+      .proj-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .proj-card {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: all 0.4s ease;
+      min-height: 320px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proj-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--line-strong);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .proj-card:hover::before {
+      opacity: 1;
+    }
+
+    .proj-card .badge {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+    }
+
+    .proj-card .badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .proj-card h3 {
+      font-family: var(--heading);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .proj-card h3 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--text-soft), var(--text-mute));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .proj-card p {
+      color: var(--text-soft);
+      font-size: 16px;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .proj-card .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    /* ---------- CLIENT SITES ---------- */
+    .sites-intro {
+      background: rgba(56, 189, 248, 0.05);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 32px;
+      margin-bottom: 64px;
+      color: var(--text-soft);
+      font-size: 18px;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+
+    .sites-intro b {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .sites-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 920px) {
+      .sites-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .sites-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .site {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(.2, .8, .2, 1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .site:hover {
+      transform: translateY(-8px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .site-thumb {
+      aspect-ratio: 16 / 10;
+      background: var(--bg-lift);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .site-thumb svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .site:hover .site-thumb svg {
+      transform: scale(1.05);
+    }
+
+    .site-body {
+      padding: 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .site-body .kind {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-mute);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .site-body .kind .live {
+      color: var(--good);
+      font-weight: 600;
+    }
+
+    .site-body h4 {
+      font-family: var(--heading);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .site-body p {
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .site-body .visit {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .site-body .visit::after {
+      content: '→';
+      transition: transform 0.2s ease;
+    }
+
+    .site:hover .site-body .visit::after {
+      transform: translateX(4px);
+    }
+
+    /* ---------- TOOLKIT ---------- */
+    .toolkit {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 760px) {
+      .toolkit {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tool-row {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .tool-row:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-2px);
+    }
+
+    .tool-row h4 {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .tool-row .items {
+      font-family: var(--body);
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .tool-row .items span {
+      color: var(--text-mute);
+      margin: 0 8px;
+    }
+
+    /* ---------- MANIFESTO ---------- */
+    .manifesto {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .manifesto p {
+      font-family: var(--body);
+      font-size: clamp(20px, 2.4vw, 24px);
+      line-height: 1.6;
+      color: var(--text-soft);
+      margin-bottom: 32px;
+    }
+
+    .manifesto p:first-child::first-letter {
+      font-family: var(--heading);
+      font-size: 3.8em;
+      float: left;
+      line-height: 0.8;
+      padding: 8px 16px 0 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .manifesto strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .manifesto em {
+      color: var(--accent-soft);
+      font-style: normal;
+    }
+
+    .manifesto .sig {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-mute);
+      margin-top: 48px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact {
+      border-bottom: none;
+      padding-bottom: clamp(64px, 12vh, 120px);
+    }
+
+    .contact-card {
+      text-align: center;
+      padding: clamp(56px, 10vh, 100px) 32px;
+      background: linear-gradient(135deg, var(--surface) 0%, rgba(2, 6, 23, 0.4) 100%);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-deep), var(--accent), var(--accent-soft));
+    }
+
+    .contact-eyebrow {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .contact h2 {
+      font-family: var(--heading);
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .contact h2 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact p {
+      color: var(--text-soft);
+      max-width: 500px;
+      margin: 0 auto 48px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .cta {
+      font-family: var(--mono);
+      font-size: 14px;
+      padding: 16px 28px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--line-strong);
+      border-radius: 12px;
+      color: var(--text);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cta:hover {
+      border-color: rgba(56, 189, 248, 0.5);
+      color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta.primary {
+      background: var(--accent);
+      color: #020617;
+      border-color: var(--accent);
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .cta.primary:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent-soft);
+      color: #020617;
+      box-shadow: 0 0 32px rgba(56, 189, 248, 0.5);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 40px 0;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-mute);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-inner a {
+      transition: color 0.2s ease;
+    }
+
+    .footer-inner a:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- ENTRANCE ANIMATIONS ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001s !important;
+        transition-duration: 0.001s !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ============ NAV ============ -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="#top" class="nav-mark">M.Y.<span>K</span> <span style="color: var(--text-mute); margin-left: 4px;">— backend.engineer</span></a>
-    <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#sites">Shipped</a>
-      <a href="#projects">Systems</a>
-      <a href="#toolkit">Toolkit</a>
-      <a href="#contact">Contact</a>
+  <!-- ============ NAV ============ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-mark">M.Y.<span>K</span> <span style="color: var(--text-mute); margin-left: 4px;">—
+          backend.engineer</span></a>
+      <div class="nav-links" id="navMenu">
+        <a href="#work" onclick="toggleMenu()">Work</a>
+        <a href="#sites" onclick="toggleMenu()">Shipped</a>
+        <a href="#projects" onclick="toggleMenu()">Systems</a>
+        <a href="#toolkit" onclick="toggleMenu()">Toolkit</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+      </div>
+      <button class="nav-toggle" onclick="toggleMenu()" aria-label="Toggle Menu" style="display: none; background: none; border: none; color: var(--text); cursor: pointer; padding: 4px;">
+        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
-  </div>
-</nav>
-
-<!-- ============ HERO ============ -->
-<header class="hero" id="top">
-  <div class="container">
-    <div class="hero-eyebrow reveal">
-      <span class="dot"></span>
-      Open to senior backend roles · India / Remote
-    </div>
-    <h1 class="reveal">
-      I build backend systems that<br>
-      <em>move money</em> and don't<br>
-      fall over at scale.
-    </h1>
-    <p class="hero-lede reveal">
-      <strong>Mohammad Yusuf Khan.</strong> Java engineer with 3 years shipping Spring Boot microservices for ERP and payments. On the side, I build full-stack interfaces for real businesses because shipping to actual users makes you a better engineer.
-    </p>
-    <div class="hero-meta reveal">
-      <div>Based<span>Nirman Vihar, Delhi</span></div>
-      <div>Stack<span>Java · Spring Boot · MySQL · AWS</span></div>
-      <div>Now<span>Building a BGMI streamer toolkit</span></div>
-      <div>Reach<span><a href="mailto:mohammad.yusufkhan12345@gmail.com">mohammad.yusufkhan12345@gmail.com</a></span></div>
-    </div>
-  </div>
-</header>
-
-<!-- ============ METRICS ============ -->
-<section id="metrics" style="padding-top: clamp(56px, 9vh, 96px); padding-bottom: clamp(56px, 9vh, 96px);">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-num">01 / Receipts</div>
-      <div>
-        <h2 class="section-title">Numbers from <em>production</em>.</h2>
-        <p class="section-sub">From the boring metrics that actually matter to engineering leaders — throughput, latency, reduction.</p>
-      </div>
-    </div>
-    <div class="metrics reveal">
-      <div class="metric">
-        <div class="metric-num">10K<em>/day</em></div>
-        <div class="metric-label">Transactions processed by APIs I built &amp; own</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">35<em>%</em></div>
-        <div class="metric-label">API performance gain via MySQL indexing &amp; query rewrites</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">200<em>+</em></div>
-        <div class="metric-label">REST endpoints designed, validated, documented</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">40<em>%</em></div>
-        <div class="metric-label">Duplicate code removed by enforcing SOLID &amp; patterns</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WORK / EXPERIENCE ============ -->
-<section id="work">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-num">02 / Trajectory</div>
-      <div>
-        <h2 class="section-title">Where I've <em>shipped</em>.</h2>
-        <p class="section-sub">Two roles, both backend-heavy, both with cross-functional ownership beyond the JD.</p>
-      </div>
-    </div>
-
-    <div class="work-list">
-      <article class="work-item reveal">
-        <div class="work-date">Dec 2024<br>— Jan 2026</div>
-        <div class="work-body">
-          <h3>Software Engineer <span class="accent">at SunbaseData LLC</span></h3>
-          <div class="work-role">Remote · Software Developer</div>
-          <ul class="work-bullets">
-            <li>Designed <b>HLD &amp; LLD</b> for ERP and financial automation microservices — payments, invoices, reconciliation, inventory.</li>
-            <li>Built REST APIs handling <b>10K+ daily transactions</b> with validation, pagination, and global exception handling.</li>
-            <li>Integrated <b>QuickBooks</b> + third-party accounting APIs for automated reconciliation workflows.</li>
-            <li>Optimized MySQL queries and indexing → <b>35% API perf gain</b>; added Prometheus / Grafana / SLF4J observability.</li>
-            <li>Containerized with Docker, deployed on <b>AWS EC2/S3</b> through Jenkins CI/CD; secured with Spring Security, JWT, OAuth 2.0, RBAC.</li>
-          </ul>
-        </div>
-        <div class="work-stack">
-          <span class="chip">Spring Boot</span>
-          <span class="chip">Microservices</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">AWS</span>
-          <span class="chip">Jenkins</span>
-          <span class="chip">React</span>
-          <span class="chip">QuickBooks</span>
-        </div>
-      </article>
-
-      <article class="work-item reveal">
-        <div class="work-date">Feb 2023<br>— Nov 2024</div>
-        <div class="work-body">
-          <h3>Software Engineer <span class="accent">at Vision Softech</span></h3>
-          <div class="work-role">ITO, Delhi · Software Developer</div>
-          <ul class="work-bullets">
-            <li>Migrated <b>legacy JEE/JSP/Servlet</b> systems to a modern Spring Boot architecture without breaking production.</li>
-            <li>Built <b>200+ REST endpoints</b> with proper validation, error handling, and modular separation.</li>
-            <li>Wired Hibernate/JPA with MySQL; tuned for reporting workloads pulling heavy aggregates.</li>
-            <li>Shipped React.js admin dashboards and JWT-secured access modules.</li>
-            <li>Stood up CI/CD via Jenkins + GitLab/Bitbucket; reduced duplicate code by <b>40%</b> applying SOLID &amp; design patterns.</li>
-          </ul>
-        </div>
-        <div class="work-stack">
-          <span class="chip">Java</span>
-          <span class="chip">Spring MVC</span>
-          <span class="chip">Hibernate</span>
-          <span class="chip">JWT</span>
-          <span class="chip">React</span>
-          <span class="chip">Docker</span>
-          <span class="chip">GitLab CI</span>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CLIENT SITES ============ -->
-<section id="sites">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-num">03 / Shipped</div>
-      <div>
-        <h2 class="section-title">Six websites <em>for real businesses</em>.</h2>
-        <p class="section-sub">Restaurants, fashion, transport, gaming. Built independently — research, design, code, deploy, talk to the owner, fix what's confusing.</p>
-      </div>
-    </div>
-
-    <div class="sites-intro reveal">
-      None of these were assigned to me. <b>I found the businesses, pitched, scoped, built, and shipped.</b> The fastest engineering education I've had — because the feedback loop is the owner calling you when something breaks.
-    </div>
-
-    <div class="sites-grid reveal">
-
-      <a class="site" href="https://aogindia.com/" target="_blank" rel="noopener noreferrer">
-        <div class="site-thumb">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#1a1f3a"/>
-                <stop offset="100%" stop-color="#0a0e1f"/>
-              </linearGradient>
-            </defs>
-            <rect width="320" height="200" fill="url(#g1)"/>
-            <circle cx="60" cy="100" r="48" fill="none" stroke="#E8A33D" stroke-width="2" opacity="0.9"/>
-            <path d="M40 100 L80 100 M60 80 L60 120" stroke="#E8A33D" stroke-width="2"/>
-            <text x="130" y="92" font-family="JetBrains Mono" font-size="11" fill="#F2EADA" letter-spacing="2">AOG</text>
-            <text x="130" y="108" font-family="Fraunces" font-size="14" fill="#F2C078" font-style="italic">Alliance of Gamers</text>
-            <text x="130" y="128" font-family="JetBrains Mono" font-size="9" fill="#7C7466" letter-spacing="1">CREATOR · NETWORK</text>
-          </svg>
-        </div>
-        <div class="site-body">
-          <div class="kind"><span>Gaming Network</span><span class="live">● LIVE</span></div>
-          <h4>AOG India</h4>
-          <p>Alliance of Gamers — a creator network platform connecting Indian gaming streamers with brands and audiences.</p>
-          <div class="visit">visit site →</div>
-        </div>
-      </a>
-
-      <a class="site" href="https://shalimar-restaurant-bdn.onrender.com/" target="_blank" rel="noopener noreferrer">
-        <div class="site-thumb">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#3a1d12"/>
-                <stop offset="100%" stop-color="#1a0a05"/>
-              </linearGradient>
-            </defs>
-            <rect width="320" height="200" fill="url(#g2)"/>
-            <text x="160" y="80" text-anchor="middle" font-family="Fraunces" font-size="28" fill="#F2EADA" font-style="italic">Shalimar</text>
-            <line x1="100" y1="95" x2="220" y2="95" stroke="#E8A33D" stroke-width="1"/>
-            <text x="160" y="115" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#F2C078" letter-spacing="3">RESTAURANT · BUDAUN</text>
-            <text x="160" y="145" text-anchor="middle" font-family="Fraunces" font-size="11" fill="#BDB39F" font-style="italic">The Royal Taste</text>
-          </svg>
-        </div>
-        <div class="site-body">
-          <div class="kind"><span>Restaurant</span><span class="live">● LIVE</span></div>
-          <h4>Shalimar Restaurant</h4>
-          <p>The Royal Taste of Budaun — menu, story, location, and direct ordering for a heritage restaurant.</p>
-          <div class="visit">visit site →</div>
-        </div>
-      </a>
-
-      <a class="site" href="https://rollz-n-zingz.vercel.app/" target="_blank" rel="noopener noreferrer">
-        <div class="site-thumb">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#3a2a0e"/>
-                <stop offset="100%" stop-color="#1a1305"/>
-              </linearGradient>
-            </defs>
-            <rect width="320" height="200" fill="url(#g3)"/>
-            <rect x="40" y="60" width="80" height="80" rx="40" fill="#E8A33D"/>
-            <text x="80" y="108" text-anchor="middle" font-family="Fraunces" font-size="32" fill="#1a1305" font-style="italic" font-weight="600">R</text>
-            <text x="140" y="92" font-family="Fraunces" font-size="20" fill="#F2EADA">Rollz</text>
-            <text x="140" y="112" font-family="Fraunces" font-size="20" fill="#F2C078" font-style="italic">N' Zingz</text>
-            <text x="140" y="135" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="2">ORDER ONLINE</text>
-          </svg>
-        </div>
-        <div class="site-body">
-          <div class="kind"><span>Food / Ordering</span><span class="live">● LIVE</span></div>
-          <h4>Rollz N' Zingz</h4>
-          <p>Online ordering and menu site for a quick-service food brand — cart, item options, location-based delivery.</p>
-          <div class="visit">visit site →</div>
-        </div>
-      </a>
-
-      <a class="site" href="https://tiger-the-royal-signatures-pvt-ltd.onrender.com/" target="_blank" rel="noopener noreferrer">
-        <div class="site-thumb">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#1a1410"/>
-                <stop offset="100%" stop-color="#0a0805"/>
-              </linearGradient>
-            </defs>
-            <rect width="320" height="200" fill="url(#g4)"/>
-            <text x="160" y="78" text-anchor="middle" font-family="Fraunces" font-size="22" fill="#F2EADA" letter-spacing="4">TIGER</text>
-            <line x1="80" y1="92" x2="240" y2="92" stroke="#E8A33D" stroke-width="0.5"/>
-            <text x="160" y="112" text-anchor="middle" font-family="Fraunces" font-size="11" fill="#F2C078" font-style="italic">The Royal Signatures</text>
-            <text x="160" y="142" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="3">LUXURY · PAKISTANI · FASHION</text>
-          </svg>
-        </div>
-        <div class="site-body">
-          <div class="kind"><span>Fashion E-commerce</span><span class="live">● LIVE</span></div>
-          <h4>Tiger — Royal Signatures</h4>
-          <p>Luxury Pakistani fashion brand site — collections, lookbook, product pages, inquiry flow.</p>
-          <div class="visit">visit site →</div>
-        </div>
-      </a>
-
-      <a class="site" href="https://faheem-cabs.onrender.com/" target="_blank" rel="noopener noreferrer">
-        <div class="site-thumb">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#0e2a1f"/>
-                <stop offset="100%" stop-color="#05140e"/>
-              </linearGradient>
-            </defs>
-            <rect width="320" height="200" fill="url(#g5)"/>
-            <rect x="50" y="80" width="60" height="34" rx="6" fill="#E8A33D"/>
-            <circle cx="65" cy="120" r="6" fill="#1a1305"/>
-            <circle cx="95" cy="120" r="6" fill="#1a1305"/>
-            <text x="135" y="92" font-family="Fraunces" font-size="18" fill="#F2EADA">Faheem</text>
-            <text x="135" y="110" font-family="Fraunces" font-size="14" fill="#F2C078" font-style="italic">Cabs</text>
-            <text x="135" y="130" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="2">BUDAUN → DELHI</text>
-          </svg>
-        </div>
-        <div class="site-body">
-          <div class="kind"><span>Booking / Transport</span><span class="live">● LIVE</span></div>
-          <h4>Faheem Cabs</h4>
-          <p>Budaun-to-Delhi cab booking platform — route info, fare estimation, contact-to-book flow tuned for mobile.</p>
-          <div class="visit">visit site →</div>
-        </div>
-      </a>
-
-      <a class="site" href="https://hms-frontend-eq2r.onrender.com" target="_blank" rel="noopener noreferrer">
-        <div class="site-thumb">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="g6" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#1a1d2e"/>
-                <stop offset="100%" stop-color="#0a0c14"/>
-              </linearGradient>
-            </defs>
-            <rect width="320" height="200" fill="url(#g6)"/>
-            <rect x="60" y="70" width="50" height="60" rx="3" fill="none" stroke="#E8A33D" stroke-width="1.5"/>
-            <line x1="68" y1="84" x2="102" y2="84" stroke="#E8A33D" stroke-width="1"/>
-            <line x1="68" y1="92" x2="102" y2="92" stroke="#E8A33D" stroke-width="1"/>
-            <line x1="68" y1="100" x2="92" y2="100" stroke="#E8A33D" stroke-width="1"/>
-            <path d="M85 108 L85 122 M78 115 L92 115" stroke="#E8A33D" stroke-width="1.5"/>
-            <text x="135" y="92" font-family="Fraunces" font-size="22" fill="#F2EADA">HMS</text>
-            <text x="135" y="115" font-family="Fraunces" font-size="11" fill="#F2C078" font-style="italic">Hospital Mgmt</text>
-            <text x="135" y="135" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="2">SYSTEM</text>
-          </svg>
-        </div>
-        <div class="site-body">
-          <div class="kind"><span>Web Application</span><span class="live">● LIVE</span></div>
-          <h4>Hospital Management System</h4>
-          <p>Full-stack HMS — patient records, appointments, billing, role-based access. Spring Boot + React.</p>
-          <div class="visit">visit site →</div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ BACKEND PROJECTS ============ -->
-<section id="projects">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-num">04 / Systems</div>
-      <div>
-        <h2 class="section-title">Production-grade <em>backend systems</em>.</h2>
-        <p class="section-sub">Three platforms I designed end-to-end — from architecture sketches to deployed, observable services.</p>
-      </div>
-    </div>
-
-    <div class="proj-grid reveal">
-      <div class="proj-card">
-        <div class="badge">In progress · Doctors Group</div>
-        <h3>Cloud-native <em>clinic</em> platform</h3>
-        <p>Full-stack clinic automation: patient flows, billing, inventory, notifications. Microservices behind a React UI, secured with Spring Security + OAuth 2.0, async schedulers for reminders and stock sync, deployed Dockerized on AWS with Jenkins CI/CD and Prometheus/Grafana on top.</p>
-        <div class="stack">
-          <span class="chip">Spring Boot</span>
-          <span class="chip">Microservices</span>
-          <span class="chip">React</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">AWS</span>
-          <span class="chip">RBAC</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="badge">SunbaseData LLC</div>
-        <h3>Payment <em>reconciliation</em> &amp; sync engine</h3>
-        <p>Spring Boot services that sync and reconcile payments across ERP, QuickBooks, and gateways. Multithreaded background workers and async jobs absorb 10K+ daily transactions; JPA/Hibernate tuned with care for reporting reads. Secured with JWT/OAuth2, monitored via Grafana.</p>
-        <div class="stack">
-          <span class="chip">Multithreading</span>
-          <span class="chip">Async Jobs</span>
-          <span class="chip">QuickBooks API</span>
-          <span class="chip">JPA</span>
-          <span class="chip">Docker</span>
-          <span class="chip">Grafana</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="badge">SunbaseData LLC</div>
-        <h3>Expense &amp; invoice <em>automation</em></h3>
-        <p>End-to-end expense and invoice workflow with event-driven processing, validation pipelines, and configurable approval chains. Reusable microservices, role-based modules, automated deploys via Maven/Gradle + Jenkins, documented with Swagger and tested with JUnit + Postman.</p>
-        <div class="stack">
-          <span class="chip">Event-driven</span>
-          <span class="chip">REST APIs</span>
-          <span class="chip">React</span>
-          <span class="chip">Swagger</span>
-          <span class="chip">JUnit</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="badge">Personal · Building now</div>
-        <h3>BGMI <em>streamer</em> toolkit</h3>
-        <p>A web app + companion mobile app for Indian BGMI streamers and gamers — built because the existing tooling is fragmented. Goal is to give creators a single dashboard for sensitivity configs, tournament tracking, and stream overlays. Backend in Spring Boot, mobile in React Native, designed mobile-first.</p>
-        <div class="stack">
-          <span class="chip">Spring Boot</span>
-          <span class="chip">React Native</span>
-          <span class="chip">YouTube API</span>
-          <span class="chip">In progress</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ TOOLKIT ============ -->
-<section id="toolkit">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-num">05 / Toolkit</div>
-      <div>
-        <h2 class="section-title">What I <em>reach for</em>.</h2>
-        <p class="section-sub">Tools I've used in production — not a checklist of buzzwords.</p>
-      </div>
-    </div>
-
-    <div class="toolkit reveal">
-      <div class="tool-row">
-        <h4>Backend</h4>
-        <div class="items">Java 8+ <span>·</span> Spring Boot <span>·</span> Spring MVC <span>·</span> Spring Security <span>·</span> Microservices <span>·</span> REST <span>·</span> JEE/Servlets <span>·</span> Multithreading <span>·</span> SLF4J</div>
-      </div>
-      <div class="tool-row">
-        <h4>Architecture</h4>
-        <div class="items">HLD <span>·</span> LLD <span>·</span> SOLID <span>·</span> Design Patterns <span>·</span> Clean Architecture <span>·</span> Event-driven <span>·</span> Async &amp; Schedulers</div>
-      </div>
-      <div class="tool-row">
-        <h4>Data</h4>
-        <div class="items">MySQL <span>·</span> JPA <span>·</span> Hibernate <span>·</span> JDBC <span>·</span> Query optimization <span>·</span> Indexing <span>·</span> Transactions</div>
-      </div>
-      <div class="tool-row">
-        <h4>Security</h4>
-        <div class="items">JWT <span>·</span> OAuth 2.0 <span>·</span> RBAC <span>·</span> CORS <span>·</span> Spring Security</div>
-      </div>
-      <div class="tool-row">
-        <h4>DevOps &amp; Cloud</h4>
-        <div class="items">AWS EC2 <span>·</span> AWS S3 <span>·</span> Docker <span>·</span> Jenkins <span>·</span> Maven <span>·</span> Gradle <span>·</span> Git/GitLab/Bitbucket</div>
-      </div>
-      <div class="tool-row">
-        <h4>Frontend &amp; Observability</h4>
-        <div class="items">React.js <span>·</span> JavaScript <span>·</span> HTML/CSS <span>·</span> Swagger <span>·</span> Prometheus <span>·</span> Grafana <span>·</span> Postman/Bruno</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MANIFESTO ============ -->
-<section id="about">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-num">06 / Note</div>
-      <div>
-        <h2 class="section-title">A short note on <em>how I work</em>.</h2>
-      </div>
-    </div>
-    <div class="manifesto reveal">
-      <p>
-        Most of what I know I learned by breaking things. When I wanted to understand frontend, I went and built six websites for actual businesses—because <strong>nothing teaches you faster than a restaurant owner texting at 11pm asking why their site won't load</strong>.
-      </p>
-      <p>
-        I write production Spring Boot for the day job, but I fully understand what it costs to scope a project, ship it, and support it. If you need someone who will own a system end-to-end without theatrics, let's talk.
-      </p>
-      <div class="sig">— mohammad yusuf khan · delhi · 2026</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CONTACT ============ -->
-<section id="contact" class="contact">
-  <div class="container">
-    <div class="contact-card reveal">
-      <div class="contact-eyebrow">Let's build something</div>
-      <h2>Hire me, or just<br><em>say hello</em>.</h2>
-      <p>I'm open to senior backend / full-stack roles, full-time or contract. Fastest reply by email.</p>
-      <div class="cta-row">
-        <a class="cta primary" href="mailto:mohammad.yusufkhan12345@gmail.com">✦ Email me</a>
-        <a class="cta" href="tel:+917037488868">+91 70374 88868</a>
-        <a class="cta" href="https://www.linkedin.com/in/m-y-k-/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-        <a class="cta" href="https://github.com/m-y-k" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-        <a class="cta" href="https://leetcode.com/u/myk220897/" target="_blank" rel="noopener noreferrer">LeetCode ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="container footer-inner">
-    <div>© 2026 · Mohammad Yusuf Khan · Built static, hosted free.</div>
-    <div>Hand-coded HTML + CSS · <a href="#top">back to top ↑</a></div>
-  </div>
-</footer>
-
-<script>
-  // Simple intersection-observer reveal — no dependencies.
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
+  </nav>
+  <style>
+    @media (max-width: 720px) {
+      .nav-toggle { display: block !important; }
+      .nav-links { display: none !important; position: absolute; top: 100%; left: 0; right: 0; background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(24px); flex-direction: column; padding: 24px; border-bottom: 1px solid var(--line); gap: 20px; }
+      .nav-links.active { display: flex !important; }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      if (window.innerWidth <= 720) {
+        document.getElementById('navMenu').classList.toggle('active');
       }
+    }
+  </script>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-eyebrow reveal">
+        <span class="dot"></span>
+        Open to senior backend roles · India / Remote
+      </div>
+      <h1 class="reveal">
+        I build backend systems that<br>
+        <em>move money</em> and don't<br>
+        fall over at scale.
+      </h1>
+      <p class="hero-lede reveal">
+        <strong>Mohammad Yusuf Khan.</strong> Java engineer with 3 years shipping Spring Boot microservices for ERP and
+        payments. On the side, I build full-stack interfaces for real businesses because shipping to actual users makes
+        you a better engineer.
+      </p>
+      <div class="hero-meta reveal">
+        <div>Based<span>Nirman Vihar, Delhi</span></div>
+        <div>Stack<span>Java · Spring Boot · MySQL · AWS</span></div>
+        <div>Now<span>Building a BGMI streamer toolkit</span></div>
+        <div>Reach<span><a href="mailto:mohammad.yusufkhan12345@gmail.com">mohammad.yusufkhan12345@gmail.com</a></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ METRICS ============ -->
+  <section id="metrics" style="padding-top: clamp(56px, 9vh, 96px); padding-bottom: clamp(56px, 9vh, 96px);">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-num">01 / Receipts</div>
+        <div>
+          <h2 class="section-title">Numbers from <em>production</em>.</h2>
+          <p class="section-sub">From the boring metrics that actually matter to engineering leaders — throughput,
+            latency, reduction.</p>
+        </div>
+      </div>
+      <div class="metrics reveal">
+        <div class="metric">
+          <div class="metric-num">10K<em>/day</em></div>
+          <div class="metric-label">Transactions processed by APIs I built &amp; own</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num">35<em>%</em></div>
+          <div class="metric-label">API performance gain via MySQL indexing &amp; query rewrites</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num">200<em>+</em></div>
+          <div class="metric-label">REST endpoints designed, validated, documented</div>
+        </div>
+        <div class="metric">
+          <div class="metric-num">40<em>%</em></div>
+          <div class="metric-label">Duplicate code removed by enforcing SOLID &amp; patterns</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK / EXPERIENCE ============ -->
+  <section id="work">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-num">02 / Trajectory</div>
+        <div>
+          <h2 class="section-title">Where I've <em>shipped</em>.</h2>
+          <p class="section-sub">Two roles, both backend-heavy, both with cross-functional ownership beyond the JD.</p>
+        </div>
+      </div>
+
+      <div class="work-list">
+        <article class="work-item reveal">
+          <div class="work-date">Dec 2024<br>— Jan 2026</div>
+          <div class="work-body">
+            <h3>Software Engineer <span class="accent">at SunbaseData LLC</span></h3>
+            <div class="work-role">Remote · Software Developer</div>
+            <ul class="work-bullets">
+              <li>Designed <b>HLD &amp; LLD</b> for ERP and financial automation microservices — payments, invoices,
+                reconciliation, inventory.</li>
+              <li>Built REST APIs handling <b>10K+ daily transactions</b> with validation, pagination, and global
+                exception handling.</li>
+              <li>Integrated <b>QuickBooks</b> + third-party accounting APIs for automated reconciliation workflows.
+              </li>
+              <li>Optimized MySQL queries and indexing → <b>35% API perf gain</b>; added Prometheus / Grafana / SLF4J
+                observability.</li>
+              <li>Containerized with Docker, deployed on <b>AWS EC2/S3</b> through Jenkins CI/CD; secured with Spring
+                Security, JWT, OAuth 2.0, RBAC.</li>
+            </ul>
+          </div>
+          <div class="work-stack">
+            <span class="chip">Spring Boot</span>
+            <span class="chip">Microservices</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">AWS</span>
+            <span class="chip">Jenkins</span>
+            <span class="chip">React</span>
+            <span class="chip">QuickBooks</span>
+          </div>
+        </article>
+
+        <article class="work-item reveal">
+          <div class="work-date">Feb 2023<br>— Nov 2024</div>
+          <div class="work-body">
+            <h3>Software Engineer <span class="accent">at Vision Softech</span></h3>
+            <div class="work-role">ITO, Delhi · Software Developer</div>
+            <ul class="work-bullets">
+              <li>Migrated <b>legacy JEE/JSP/Servlet</b> systems to a modern Spring Boot architecture without breaking
+                production.</li>
+              <li>Built <b>200+ REST endpoints</b> with proper validation, error handling, and modular separation.</li>
+              <li>Wired Hibernate/JPA with MySQL; tuned for reporting workloads pulling heavy aggregates.</li>
+              <li>Shipped React.js admin dashboards and JWT-secured access modules.</li>
+              <li>Stood up CI/CD via Jenkins + GitLab/Bitbucket; reduced duplicate code by <b>40%</b> applying SOLID
+                &amp; design patterns.</li>
+            </ul>
+          </div>
+          <div class="work-stack">
+            <span class="chip">Java</span>
+            <span class="chip">Spring MVC</span>
+            <span class="chip">Hibernate</span>
+            <span class="chip">JWT</span>
+            <span class="chip">React</span>
+            <span class="chip">Docker</span>
+            <span class="chip">GitLab CI</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENT SITES ============ -->
+  <section id="sites">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-num">03 / Shipped</div>
+        <div>
+          <h2 class="section-title">Six websites <em>for real businesses</em>.</h2>
+          <p class="section-sub">Restaurants, fashion, transport, gaming. Built independently — research, design, code,
+            deploy, talk to the owner, fix what's confusing.</p>
+        </div>
+      </div>
+
+      <div class="sites-intro reveal">
+        None of these were assigned to me. <b>I found the businesses, pitched, scoped, built, and shipped.</b> The
+        fastest engineering education I've had — because the feedback loop is the owner calling you when something
+        breaks.
+      </div>
+
+      <div class="sites-grid reveal">
+
+        <a class="site" href="https://aogindia.com/" target="_blank" rel="noopener noreferrer">
+          <div class="site-thumb">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1a1f3a" />
+                  <stop offset="100%" stop-color="#0a0e1f" />
+                </linearGradient>
+              </defs>
+              <rect width="320" height="200" fill="url(#g1)" />
+              <circle cx="60" cy="100" r="48" fill="none" stroke="#E8A33D" stroke-width="2" opacity="0.9" />
+              <path d="M40 100 L80 100 M60 80 L60 120" stroke="#E8A33D" stroke-width="2" />
+              <text x="130" y="92" font-family="JetBrains Mono" font-size="11" fill="#F2EADA"
+                letter-spacing="2">AOG</text>
+              <text x="130" y="108" font-family="Fraunces" font-size="14" fill="#F2C078" font-style="italic">Alliance of
+                Gamers</text>
+              <text x="130" y="128" font-family="JetBrains Mono" font-size="9" fill="#7C7466" letter-spacing="1">CREATOR
+                · NETWORK</text>
+            </svg>
+          </div>
+          <div class="site-body">
+            <div class="kind"><span>Gaming Network</span><span class="live">● LIVE</span></div>
+            <h4>AOG India</h4>
+            <p>Alliance of Gamers — a creator network platform connecting Indian gaming streamers with brands and
+              audiences.</p>
+            <div class="visit">visit site →</div>
+          </div>
+        </a>
+
+        <a class="site" href="https://shalimar-restaurant-bdn.onrender.com/" target="_blank" rel="noopener noreferrer">
+          <div class="site-thumb">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3a1d12" />
+                  <stop offset="100%" stop-color="#1a0a05" />
+                </linearGradient>
+              </defs>
+              <rect width="320" height="200" fill="url(#g2)" />
+              <text x="160" y="80" text-anchor="middle" font-family="Fraunces" font-size="28" fill="#F2EADA"
+                font-style="italic">Shalimar</text>
+              <line x1="100" y1="95" x2="220" y2="95" stroke="#E8A33D" stroke-width="1" />
+              <text x="160" y="115" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#F2C078"
+                letter-spacing="3">RESTAURANT · BUDAUN</text>
+              <text x="160" y="145" text-anchor="middle" font-family="Fraunces" font-size="11" fill="#BDB39F"
+                font-style="italic">The Royal Taste</text>
+            </svg>
+          </div>
+          <div class="site-body">
+            <div class="kind"><span>Restaurant</span><span class="live">● LIVE</span></div>
+            <h4>Shalimar Restaurant</h4>
+            <p>The Royal Taste of Budaun — menu, story, location, and direct ordering for a heritage restaurant.</p>
+            <div class="visit">visit site →</div>
+          </div>
+        </a>
+
+        <a class="site" href="https://rollz-n-zingz.vercel.app/" target="_blank" rel="noopener noreferrer">
+          <div class="site-thumb">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#3a2a0e" />
+                  <stop offset="100%" stop-color="#1a1305" />
+                </linearGradient>
+              </defs>
+              <rect width="320" height="200" fill="url(#g3)" />
+              <rect x="40" y="60" width="80" height="80" rx="40" fill="#E8A33D" />
+              <text x="80" y="108" text-anchor="middle" font-family="Fraunces" font-size="32" fill="#1a1305"
+                font-style="italic" font-weight="600">R</text>
+              <text x="140" y="92" font-family="Fraunces" font-size="20" fill="#F2EADA">Rollz</text>
+              <text x="140" y="112" font-family="Fraunces" font-size="20" fill="#F2C078" font-style="italic">N'
+                Zingz</text>
+              <text x="140" y="135" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="2">ORDER
+                ONLINE</text>
+            </svg>
+          </div>
+          <div class="site-body">
+            <div class="kind"><span>Food / Ordering</span><span class="live">● LIVE</span></div>
+            <h4>Rollz N' Zingz</h4>
+            <p>Online ordering and menu site for a quick-service food brand — cart, item options, location-based
+              delivery.</p>
+            <div class="visit">visit site →</div>
+          </div>
+        </a>
+
+        <a class="site" href="https://tiger-the-royal-signatures-pvt-ltd.onrender.com/" target="_blank"
+          rel="noopener noreferrer">
+          <div class="site-thumb">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1a1410" />
+                  <stop offset="100%" stop-color="#0a0805" />
+                </linearGradient>
+              </defs>
+              <rect width="320" height="200" fill="url(#g4)" />
+              <text x="160" y="78" text-anchor="middle" font-family="Fraunces" font-size="22" fill="#F2EADA"
+                letter-spacing="4">TIGER</text>
+              <line x1="80" y1="92" x2="240" y2="92" stroke="#E8A33D" stroke-width="0.5" />
+              <text x="160" y="112" text-anchor="middle" font-family="Fraunces" font-size="11" fill="#F2C078"
+                font-style="italic">The Royal Signatures</text>
+              <text x="160" y="142" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#7C7466"
+                letter-spacing="3">LUXURY · PAKISTANI · FASHION</text>
+            </svg>
+          </div>
+          <div class="site-body">
+            <div class="kind"><span>Fashion E-commerce</span><span class="live">● LIVE</span></div>
+            <h4>Tiger — Royal Signatures</h4>
+            <p>Luxury Pakistani fashion brand site — collections, lookbook, product pages, inquiry flow.</p>
+            <div class="visit">visit site →</div>
+          </div>
+        </a>
+
+        <a class="site" href="https://faheem-cabs.onrender.com/" target="_blank" rel="noopener noreferrer">
+          <div class="site-thumb">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#0e2a1f" />
+                  <stop offset="100%" stop-color="#05140e" />
+                </linearGradient>
+              </defs>
+              <rect width="320" height="200" fill="url(#g5)" />
+              <rect x="50" y="80" width="60" height="34" rx="6" fill="#E8A33D" />
+              <circle cx="65" cy="120" r="6" fill="#1a1305" />
+              <circle cx="95" cy="120" r="6" fill="#1a1305" />
+              <text x="135" y="92" font-family="Fraunces" font-size="18" fill="#F2EADA">Faheem</text>
+              <text x="135" y="110" font-family="Fraunces" font-size="14" fill="#F2C078" font-style="italic">Cabs</text>
+              <text x="135" y="130" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="2">BUDAUN
+                → DELHI</text>
+            </svg>
+          </div>
+          <div class="site-body">
+            <div class="kind"><span>Booking / Transport</span><span class="live">● LIVE</span></div>
+            <h4>Faheem Cabs</h4>
+            <p>Budaun-to-Delhi cab booking platform — route info, fare estimation, contact-to-book flow tuned for
+              mobile.</p>
+            <div class="visit">visit site →</div>
+          </div>
+        </a>
+
+        <a class="site" href="https://hms-frontend-eq2r.onrender.com" target="_blank" rel="noopener noreferrer">
+          <div class="site-thumb">
+            <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g6" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1a1d2e" />
+                  <stop offset="100%" stop-color="#0a0c14" />
+                </linearGradient>
+              </defs>
+              <rect width="320" height="200" fill="url(#g6)" />
+              <rect x="60" y="70" width="50" height="60" rx="3" fill="none" stroke="#E8A33D" stroke-width="1.5" />
+              <line x1="68" y1="84" x2="102" y2="84" stroke="#E8A33D" stroke-width="1" />
+              <line x1="68" y1="92" x2="102" y2="92" stroke="#E8A33D" stroke-width="1" />
+              <line x1="68" y1="100" x2="92" y2="100" stroke="#E8A33D" stroke-width="1" />
+              <path d="M85 108 L85 122 M78 115 L92 115" stroke="#E8A33D" stroke-width="1.5" />
+              <text x="135" y="92" font-family="Fraunces" font-size="22" fill="#F2EADA">HMS</text>
+              <text x="135" y="115" font-family="Fraunces" font-size="11" fill="#F2C078" font-style="italic">Hospital
+                Mgmt</text>
+              <text x="135" y="135" font-family="JetBrains Mono" font-size="8" fill="#7C7466"
+                letter-spacing="2">SYSTEM</text>
+            </svg>
+          </div>
+          <div class="site-body">
+            <div class="kind"><span>Web Application</span><span class="live">● LIVE</span></div>
+            <h4>Hospital Management System</h4>
+            <p>Full-stack HMS — patient records, appointments, billing, role-based access. Spring Boot + React.</p>
+            <div class="visit">visit site →</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BACKEND PROJECTS ============ -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-num">04 / Systems</div>
+        <div>
+          <h2 class="section-title">Production-grade <em>backend systems</em>.</h2>
+          <p class="section-sub">Three platforms I designed end-to-end — from architecture sketches to deployed,
+            observable services.</p>
+        </div>
+      </div>
+
+      <div class="proj-grid reveal">
+        <div class="proj-card">
+          <div class="badge">In progress · Doctors Group</div>
+          <h3>Cloud-native <em>clinic</em> platform</h3>
+          <p>Full-stack clinic automation: patient flows, billing, inventory, notifications. Microservices behind a
+            React UI, secured with Spring Security + OAuth 2.0, async schedulers for reminders and stock sync, deployed
+            Dockerized on AWS with Jenkins CI/CD and Prometheus/Grafana on top.</p>
+          <div class="stack">
+            <span class="chip">Spring Boot</span>
+            <span class="chip">Microservices</span>
+            <span class="chip">React</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">AWS</span>
+            <span class="chip">RBAC</span>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="badge">SunbaseData LLC</div>
+          <h3>Payment <em>reconciliation</em> &amp; sync engine</h3>
+          <p>Spring Boot services that sync and reconcile payments across ERP, QuickBooks, and gateways. Multithreaded
+            background workers and async jobs absorb 10K+ daily transactions; JPA/Hibernate tuned with care for
+            reporting reads. Secured with JWT/OAuth2, monitored via Grafana.</p>
+          <div class="stack">
+            <span class="chip">Multithreading</span>
+            <span class="chip">Async Jobs</span>
+            <span class="chip">QuickBooks API</span>
+            <span class="chip">JPA</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Grafana</span>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="badge">SunbaseData LLC</div>
+          <h3>Expense &amp; invoice <em>automation</em></h3>
+          <p>End-to-end expense and invoice workflow with event-driven processing, validation pipelines, and
+            configurable approval chains. Reusable microservices, role-based modules, automated deploys via Maven/Gradle
+            + Jenkins, documented with Swagger and tested with JUnit + Postman.</p>
+          <div class="stack">
+            <span class="chip">Event-driven</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">React</span>
+            <span class="chip">Swagger</span>
+            <span class="chip">JUnit</span>
+          </div>
+        </div>
+
+        <div class="proj-card">
+          <div class="badge">Personal · Building now</div>
+          <h3>BGMI <em>streamer</em> toolkit</h3>
+          <p>A web app + companion mobile app for Indian BGMI streamers and gamers — built because the existing tooling
+            is fragmented. Goal is to give creators a single dashboard for sensitivity configs, tournament tracking, and
+            stream overlays. Backend in Spring Boot, mobile in React Native, designed mobile-first.</p>
+          <div class="stack">
+            <span class="chip">Spring Boot</span>
+            <span class="chip">React Native</span>
+            <span class="chip">YouTube API</span>
+            <span class="chip">In progress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOOLKIT ============ -->
+  <section id="toolkit">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-num">05 / Toolkit</div>
+        <div>
+          <h2 class="section-title">What I <em>reach for</em>.</h2>
+          <p class="section-sub">Tools I've used in production — not a checklist of buzzwords.</p>
+        </div>
+      </div>
+
+      <div class="toolkit reveal">
+        <div class="tool-row">
+          <h4>Backend</h4>
+          <div class="items">Java 8+ <span>·</span> Spring Boot <span>·</span> Spring MVC <span>·</span> Spring Security
+            <span>·</span> Microservices <span>·</span> REST <span>·</span> JEE/Servlets <span>·</span> Multithreading
+            <span>·</span> SLF4J</div>
+        </div>
+        <div class="tool-row">
+          <h4>Architecture</h4>
+          <div class="items">HLD <span>·</span> LLD <span>·</span> SOLID <span>·</span> Design Patterns <span>·</span>
+            Clean Architecture <span>·</span> Event-driven <span>·</span> Async &amp; Schedulers</div>
+        </div>
+        <div class="tool-row">
+          <h4>Data</h4>
+          <div class="items">MySQL <span>·</span> JPA <span>·</span> Hibernate <span>·</span> JDBC <span>·</span> Query
+            optimization <span>·</span> Indexing <span>·</span> Transactions</div>
+        </div>
+        <div class="tool-row">
+          <h4>Security</h4>
+          <div class="items">JWT <span>·</span> OAuth 2.0 <span>·</span> RBAC <span>·</span> CORS <span>·</span> Spring
+            Security</div>
+        </div>
+        <div class="tool-row">
+          <h4>DevOps &amp; Cloud</h4>
+          <div class="items">AWS EC2 <span>·</span> AWS S3 <span>·</span> Docker <span>·</span> Jenkins <span>·</span>
+            Maven <span>·</span> Gradle <span>·</span> Git/GitLab/Bitbucket</div>
+        </div>
+        <div class="tool-row">
+          <h4>Frontend &amp; Observability</h4>
+          <div class="items">React.js <span>·</span> JavaScript <span>·</span> HTML/CSS <span>·</span> Swagger
+            <span>·</span> Prometheus <span>·</span> Grafana <span>·</span> Postman/Bruno</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MANIFESTO ============ -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-num">06 / Note</div>
+        <div>
+          <h2 class="section-title">A short note on <em>how I work</em>.</h2>
+        </div>
+      </div>
+      <div class="manifesto reveal">
+        <p>
+          Most of what I know I learned by breaking things. When I wanted to understand frontend, I went and built six
+          websites for actual businesses—because <strong>nothing teaches you faster than a restaurant owner texting at
+            11pm asking why their site won't load</strong>.
+        </p>
+        <p>
+          I write production Spring Boot for the day job, but I fully understand what it costs to scope a project, ship
+          it, and support it. If you need someone who will own a system end-to-end without theatrics, let's talk.
+        </p>
+        <div class="sig">— mohammad yusuf khan · delhi · 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-card reveal">
+        <div class="contact-eyebrow">Let's build something</div>
+        <h2>Hire me, or just<br><em>say hello</em>.</h2>
+        <p>I'm open to senior backend / full-stack roles, full-time or contract. Fastest reply by email.</p>
+        <div class="cta-row">
+          <a class="cta primary" href="mailto:mohammad.yusufkhan12345@gmail.com">✦ Email me</a>
+          <a class="cta" href="tel:+917037488868">+91 70374 88868</a>
+          <a class="cta" href="https://www.linkedin.com/in/m-y-k-/" target="_blank" rel="noopener noreferrer">LinkedIn
+            ↗</a>
+          <a class="cta" href="https://github.com/m-y-k" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a class="cta" href="https://leetcode.com/u/myk220897/" target="_blank" rel="noopener noreferrer">LeetCode
+            ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 · Mohammad Yusuf Khan · Built static, hosted free.</div>
+      <div>Hand-coded HTML + CSS · <a href="#top">back to top ↑</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple intersection-observer reveal — no dependencies.
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Stagger hero reveals
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i * 120) + 'ms';
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Stagger hero reveals
-  document.querySelectorAll('.hero .reveal').forEach((el, i) => {
-    el.style.transitionDelay = (i * 120) + 'ms';
-  });
-</script>
+  </script>
 
 </body>
+
 </html>
