@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mohammad Yusuf Khan — Java Backend Engineer</title>
-<meta name="description" content="Java backend engineer with 3 years building production systems that move money, sync inventory, and don't fall over at 10K daily transactions. Spring Boot, Microservices, AWS." /><meta name="theme-color" content="#020617" />
+<meta name="description" content="Java backend engineer with 3 years building production systems that move money, sync inventory, and don't fall over at 10K daily transactions. Spring Boot, Microservices, AWS." /><meta name="theme-color" content="#0a0a0a" />
 
 <!-- Open Graph -->
 <meta property="og:title" content="Mohammad Yusuf Khan — Java Backend Engineer" />
@@ -30,7 +30,7 @@
     --line-strong: rgba(71, 85, 105, 0.6);
     --text: #f8fafc;
     --text-soft: #cbd5e1;
-    --text-mute: #64748b;
+    --text-mute: #487ec8;
     --accent: #38bdf8;        /* neon blue */
     --accent-soft: #7dd3fc;
     --accent-deep: #0284c7;
@@ -822,8 +822,8 @@
     <a href="#top" class="nav-mark">M.Y.<span>K</span> <span style="color: var(--text-mute); margin-left: 4px;">— backend.engineer</span></a>
     <div class="nav-links">
       <a href="#work">Work</a>
-      <a href="#projects">Systems</a>
       <a href="#sites">Shipped</a>
+      <a href="#projects">Systems</a>
       <a href="#toolkit">Toolkit</a>
       <a href="#contact">Contact</a>
     </div>
@@ -843,7 +843,7 @@
       fall over at scale.
     </h1>
     <p class="hero-lede reveal">
-      <strong>Mohammad Yusuf Khan.</strong> Java engineer with ~3 years shipping Spring Boot microservices for ERP, payments, and reconciliation — the boring, load-bearing kind. On the side, I've shipped six production websites for real businesses, because the fastest way to learn what users want is to put something in front of them.
+      <strong>Mohammad Yusuf Khan.</strong> Java engineer with 3 years shipping Spring Boot microservices for ERP and payments. On the side, I build full-stack interfaces for real businesses because shipping to actual users makes you a better engineer.
     </p>
     <div class="hero-meta reveal">
       <div>Based<span>Nirman Vihar, Delhi</span></div>
@@ -948,79 +948,11 @@
   </div>
 </section>
 
-<!-- ============ BACKEND PROJECTS ============ -->
-<section id="projects">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-num">03 / Systems</div>
-      <div>
-        <h2 class="section-title">Production-grade <em>backend systems</em>.</h2>
-        <p class="section-sub">Three platforms I designed end-to-end — from architecture sketches to deployed, observable services.</p>
-      </div>
-    </div>
-
-    <div class="proj-grid reveal">
-      <div class="proj-card">
-        <div class="badge">In progress · Doctors Group</div>
-        <h3>Cloud-native <em>clinic</em> platform</h3>
-        <p>Full-stack clinic automation: patient flows, billing, inventory, notifications. Microservices behind a React UI, secured with Spring Security + OAuth 2.0, async schedulers for reminders and stock sync, deployed Dockerized on AWS with Jenkins CI/CD and Prometheus/Grafana on top.</p>
-        <div class="stack">
-          <span class="chip">Spring Boot</span>
-          <span class="chip">Microservices</span>
-          <span class="chip">React</span>
-          <span class="chip">MySQL</span>
-          <span class="chip">AWS</span>
-          <span class="chip">RBAC</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="badge">SunbaseData LLC</div>
-        <h3>Payment <em>reconciliation</em> &amp; sync engine</h3>
-        <p>Spring Boot services that sync and reconcile payments across ERP, QuickBooks, and gateways. Multithreaded background workers and async jobs absorb 10K+ daily transactions; JPA/Hibernate tuned with care for reporting reads. Secured with JWT/OAuth2, monitored via Grafana.</p>
-        <div class="stack">
-          <span class="chip">Multithreading</span>
-          <span class="chip">Async Jobs</span>
-          <span class="chip">QuickBooks API</span>
-          <span class="chip">JPA</span>
-          <span class="chip">Docker</span>
-          <span class="chip">Grafana</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="badge">SunbaseData LLC</div>
-        <h3>Expense &amp; invoice <em>automation</em></h3>
-        <p>End-to-end expense and invoice workflow with event-driven processing, validation pipelines, and configurable approval chains. Reusable microservices, role-based modules, automated deploys via Maven/Gradle + Jenkins, documented with Swagger and tested with JUnit + Postman.</p>
-        <div class="stack">
-          <span class="chip">Event-driven</span>
-          <span class="chip">REST APIs</span>
-          <span class="chip">React</span>
-          <span class="chip">Swagger</span>
-          <span class="chip">JUnit</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="badge">Personal · Building now</div>
-        <h3>BGMI <em>streamer</em> toolkit</h3>
-        <p>A web app + companion mobile app for Indian BGMI streamers and gamers — built because the existing tooling is fragmented. Goal is to give creators a single dashboard for sensitivity configs, tournament tracking, and stream overlays. Backend in Spring Boot, mobile in React Native, designed mobile-first.</p>
-        <div class="stack">
-          <span class="chip">Spring Boot</span>
-          <span class="chip">React Native</span>
-          <span class="chip">YouTube API</span>
-          <span class="chip">In progress</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ CLIENT SITES ============ -->
 <section id="sites">
   <div class="container">
     <div class="section-head reveal">
-      <div class="section-num">04 / Shipped</div>
+      <div class="section-num">03 / Shipped</div>
       <div>
         <h2 class="section-title">Six websites <em>for real businesses</em>.</h2>
         <p class="section-sub">Restaurants, fashion, transport, gaming. Built independently — research, design, code, deploy, talk to the owner, fix what's confusing.</p>
@@ -1189,6 +1121,74 @@
   </div>
 </section>
 
+<!-- ============ BACKEND PROJECTS ============ -->
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">04 / Systems</div>
+      <div>
+        <h2 class="section-title">Production-grade <em>backend systems</em>.</h2>
+        <p class="section-sub">Three platforms I designed end-to-end — from architecture sketches to deployed, observable services.</p>
+      </div>
+    </div>
+
+    <div class="proj-grid reveal">
+      <div class="proj-card">
+        <div class="badge">In progress · Doctors Group</div>
+        <h3>Cloud-native <em>clinic</em> platform</h3>
+        <p>Full-stack clinic automation: patient flows, billing, inventory, notifications. Microservices behind a React UI, secured with Spring Security + OAuth 2.0, async schedulers for reminders and stock sync, deployed Dockerized on AWS with Jenkins CI/CD and Prometheus/Grafana on top.</p>
+        <div class="stack">
+          <span class="chip">Spring Boot</span>
+          <span class="chip">Microservices</span>
+          <span class="chip">React</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">AWS</span>
+          <span class="chip">RBAC</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="badge">SunbaseData LLC</div>
+        <h3>Payment <em>reconciliation</em> &amp; sync engine</h3>
+        <p>Spring Boot services that sync and reconcile payments across ERP, QuickBooks, and gateways. Multithreaded background workers and async jobs absorb 10K+ daily transactions; JPA/Hibernate tuned with care for reporting reads. Secured with JWT/OAuth2, monitored via Grafana.</p>
+        <div class="stack">
+          <span class="chip">Multithreading</span>
+          <span class="chip">Async Jobs</span>
+          <span class="chip">QuickBooks API</span>
+          <span class="chip">JPA</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Grafana</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="badge">SunbaseData LLC</div>
+        <h3>Expense &amp; invoice <em>automation</em></h3>
+        <p>End-to-end expense and invoice workflow with event-driven processing, validation pipelines, and configurable approval chains. Reusable microservices, role-based modules, automated deploys via Maven/Gradle + Jenkins, documented with Swagger and tested with JUnit + Postman.</p>
+        <div class="stack">
+          <span class="chip">Event-driven</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">React</span>
+          <span class="chip">Swagger</span>
+          <span class="chip">JUnit</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="badge">Personal · Building now</div>
+        <h3>BGMI <em>streamer</em> toolkit</h3>
+        <p>A web app + companion mobile app for Indian BGMI streamers and gamers — built because the existing tooling is fragmented. Goal is to give creators a single dashboard for sensitivity configs, tournament tracking, and stream overlays. Backend in Spring Boot, mobile in React Native, designed mobile-first.</p>
+        <div class="stack">
+          <span class="chip">Spring Boot</span>
+          <span class="chip">React Native</span>
+          <span class="chip">YouTube API</span>
+          <span class="chip">In progress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ TOOLKIT ============ -->
 <section id="toolkit">
   <div class="container">
@@ -1240,13 +1240,10 @@
     </div>
     <div class="manifesto reveal">
       <p>
-        Most of what I know I learned by being uncomfortable. When I joined my first job, I didn't know JPA from JDBC — I figured it out by breaking things and reading the stack traces. When I wanted to understand frontend, I didn't take a course; I went and built six websites for actual businesses, because <strong>nothing teaches you faster than a restaurant owner texting at 11pm asking why the menu won't load</strong>.
+        Most of what I know I learned by breaking things. When I wanted to understand frontend, I went and built six websites for actual businesses—because <strong>nothing teaches you faster than a restaurant owner texting at 11pm asking why their site won't load</strong>.
       </p>
       <p>
-        I'm scrappy in a specific way: I'd rather <em>research a problem until I can defend a solution</em> than wait for someone to hand me the answer. I write production Spring Boot for the day job, but I also know what it costs to find a customer, scope a project, ship it, and support it.
-      </p>
-      <p>
-        If you're a founder or tech lead and you need someone who'll own a system end-to-end without theatrics — I'm probably worth a 20-minute call.
+        I write production Spring Boot for the day job, but I fully understand what it costs to scope a project, ship it, and support it. If you need someone who will own a system end-to-end without theatrics, let's talk.
       </p>
       <div class="sig">— mohammad yusuf khan · delhi · 2026</div>
     </div>
