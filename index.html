@@ -370,16 +370,11 @@
     }
 
     /* ---------- METRICS ---------- */
+    /* ---------- METRICS ---------- */
     .metrics {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-    }
-
-    @media (max-width: 760px) {
-      .metrics {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
     .metric {
@@ -429,6 +424,28 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .metrics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .metric {
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+      .metric {
+        padding: 24px 20px;
+      }
+      .metric-num {
+        font-size: 40px;
+      }
     }
 
     /* ---------- WORK / PROJECTS ---------- */
@@ -1024,6 +1041,65 @@
     .reveal.in {
       opacity: 1;
       transform: none;
+    }
+
+    /* ===== MOBILE ALIGNMENT FIXES (≤600px) ===== */
+    @media (max-width: 600px) {
+
+      /* Hero meta: reduce gap so items don't feel spaced out */
+      .hero-meta {
+        gap: 24px 32px;
+      }
+
+      /* Hero CV button: full width so it doesn't look orphaned */
+      .hero-cv {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Proj cards: reduce padding when stacked */
+      .proj-card {
+        padding: 28px 24px;
+        min-height: unset;
+      }
+
+      /* Work items: reduce padding on small screens */
+      .work-item {
+        padding: 24px 20px;
+      }
+
+      /* Tool rows: reduce padding when stacked */
+      .tool-row {
+        padding: 24px 20px;
+      }
+
+      /* Sites intro: reduce horizontal padding */
+      .sites-intro {
+        padding: 16px 20px;
+        font-size: 16px;
+      }
+
+      /* Manifesto drop cap: shrink from 3.8em to prevent overflow */
+      .manifesto p:first-child::first-letter {
+        font-size: 2.8em;
+        padding: 4px 10px 0 0;
+      }
+
+      /* Footer: center both lines when they wrap */
+      .footer-inner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      /* Contact card: reduce horizontal padding */
+      .contact-card {
+        padding: clamp(40px, 8vh, 72px) 20px;
+      }
+
+      /* Section header: tighten margin */
+      .section-head {
+        margin-bottom: 36px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
