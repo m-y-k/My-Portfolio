@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohammad Yusuf Khan — Java Backend Engineer</title>
+<meta name="description" content="Java backend engineer with 3 years building production systems that move money, sync inventory, and don't fall over at 10K daily transactions. Spring Boot, Microservices, AWS." />
+<meta name="theme-color" content="#0F0E0C" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Mohammad Yusuf Khan — Java Backend Engineer" />
+<meta property="og:description" content="3 years shipping Spring Boot systems for ERP, payments, and reconciliation. Plus six production websites for real businesses." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://m-y-k.github.io/portfolio/" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230F0E0C'/><text x='50' y='72' font-family='serif' font-size='72' font-style='italic' text-anchor='middle' fill='%23E8A33D'>K</text></svg>" />
+
+<!-- Fonts: Fraunces (display + serif body) + JetBrains Mono (technical UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0F0E0C;
+    --bg-lift: #17150F;
+    --surface: #1C1A14;
+    --line: #2A2620;
+    --line-strong: #3A342B;
+    --text: #F2EADA;
+    --text-soft: #BDB39F;
+    --text-mute: #7C7466;
+    --accent: #E8A33D;        /* saffron */
+    --accent-soft: #F2C078;
+    --accent-deep: #B87A1F;
+    --good: #8FB369;
+
+    --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    --radius: 4px;
+    --maxw: 1120px;
+    --gutter: clamp(20px, 4vw, 56px);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--serif);
+    font-weight: 380;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-optical-sizing: auto;
+    overflow-x: hidden;
+  }
+
+  /* Subtle film grain overlay for warmth */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  ::selection { background: var(--accent); color: #1A1207; }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(15, 14, 12, 0.72);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 14px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .nav-mark {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  .nav-mark span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-soft);
+  }
+  .nav-links a {
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a::before {
+    content: "";
+    position: absolute;
+    left: -14px; top: 50%;
+    width: 4px; height: 4px;
+    background: var(--line-strong);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: background 0.2s ease;
+  }
+  .nav-links a:hover::before { background: var(--accent); }
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: clamp(72px, 14vh, 140px) 0 clamp(60px, 10vh, 100px);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow .dot {
+    width: 7px; height: 7px;
+    background: var(--good);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(143, 179, 105, 0.18);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(143, 179, 105, 0.18); }
+    50% { box-shadow: 0 0 0 8px rgba(143, 179, 105, 0.05); }
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(44px, 7.4vw, 96px);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+    font-weight: 360;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-soft);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+    font-weight: 320;
+  }
+
+  .hero-lede {
+    font-size: clamp(18px, 2.1vw, 22px);
+    line-height: 1.5;
+    color: var(--text-soft);
+    max-width: 640px;
+    margin-bottom: 44px;
+  }
+  .hero-lede strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px 56px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .hero-meta div span {
+    display: block;
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 6px;
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .hero-meta a:hover { color: var(--accent); }
+
+  /* ---------- SECTION HEADER ---------- */
+  section { padding: clamp(72px, 12vh, 128px) 0; border-bottom: 1px solid var(--line); }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+    align-items: baseline;
+  }
+  @media (max-width: 760px) {
+    .section-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 44px; }
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding-top: 8px;
+    border-top: 1px solid var(--accent);
+    width: 80px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 380;
+    font-variation-settings: "opsz" 80;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--accent-soft);
+    font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+  }
+  .section-sub {
+    margin-top: 14px;
+    color: var(--text-soft);
+    font-size: 17px;
+    max-width: 580px;
+  }
+
+  /* ---------- METRICS ---------- */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 760px) {
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+  }
+  .metric {
+    background: var(--bg);
+    padding: 36px 28px;
+    transition: background 0.3s ease;
+  }
+  .metric:hover { background: var(--bg-lift); }
+  .metric-num {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    font-weight: 380;
+    font-variation-settings: "opsz" 144;
+    margin-bottom: 12px;
+  }
+  .metric-num em {
+    font-family: var(--mono);
+    font-style: normal;
+    color: var(--accent);
+    font-size: 0.45em;
+    margin-left: 4px;
+    vertical-align: 8px;
+    font-weight: 500;
+  }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* ---------- WORK / PROJECTS ---------- */
+  .work-list { display: flex; flex-direction: column; }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 100px 1fr 200px;
+    gap: 32px;
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+    transition: padding 0.25s ease;
+    position: relative;
+  }
+  .work-item:last-child { border-bottom: 1px solid var(--line); }
+  .work-item:hover { padding-left: 12px; }
+  @media (max-width: 760px) {
+    .work-item { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+    .work-item:hover { padding-left: 0; }
+  }
+
+  .work-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-mute);
+    letter-spacing: 0.04em;
+    padding-top: 8px;
+    text-transform: uppercase;
+  }
+  .work-body h3 {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 420;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .work-body h3 .accent {
+    color: var(--accent);
+    font-style: italic;
+    font-variation-settings: "opsz" 80, "SOFT" 100;
+  }
+  .work-role {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+  }
+  .work-bullets {
+    list-style: none;
+    color: var(--text-soft);
+  }
+  .work-bullets li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .work-bullets li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+  .work-bullets b {
+    color: var(--text);
+    font-weight: 500;
+    background: linear-gradient(transparent 65%, rgba(232, 163, 61, 0.18) 65%);
+    padding: 0 2px;
+  }
+
+  .work-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-content: start;
+  }
+  .chip {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-soft);
+    background: var(--bg-lift);
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- PROJECTS GRID (backend) ---------- */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 760px) { .proj-grid { grid-template-columns: 1fr; } }
+
+  .proj-card {
+    background: var(--bg);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: background 0.25s ease;
+    min-height: 280px;
+  }
+  .proj-card:hover { background: var(--bg-lift); }
+  .proj-card .badge {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .proj-card .badge::before {
+    content: "";
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .proj-card h3 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .proj-card h3 em {
+    font-style: italic;
+    color: var(--accent-soft);
+    font-variation-settings: "opsz" 80, "SOFT" 100, "WONK" 1;
+  }
+  .proj-card p {
+    color: var(--text-soft);
+    font-size: 15.5px;
+    line-height: 1.55;
+    flex-grow: 1;
+  }
+  .proj-card .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  /* ---------- CLIENT SITES (the scrappy proof) ---------- */
+  .sites-intro {
+    background: linear-gradient(180deg, rgba(232, 163, 61, 0.04), transparent);
+    border-left: 2px solid var(--accent);
+    padding: 20px 28px;
+    margin-bottom: 56px;
+    color: var(--text-soft);
+    font-size: 17px;
+    font-style: italic;
+    max-width: 720px;
+  }
+  .sites-intro b { color: var(--text); font-style: normal; font-weight: 500; }
+
+  .sites-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 920px) { .sites-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .sites-grid { grid-template-columns: 1fr; } }
+
+  .site {
+    background: var(--bg-lift);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(.2,.8,.2,1), border-color 0.25s ease;
+    position: relative;
+    display: block;
+  }
+  .site:hover {
+    transform: translateY(-4px);
+    border-color: var(--line-strong);
+  }
+  .site-thumb {
+    aspect-ratio: 16 / 10;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .site-thumb svg { width: 100%; height: 100%; display: block; }
+
+  .site-body { padding: 18px 20px 20px; }
+  .site-body .kind {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .site-body .kind .live { color: var(--good); }
+  .site-body h4 {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 420;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .site-body p {
+    color: var(--text-mute);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .site-body .visit {
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------- TOOLKIT ---------- */
+  .toolkit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 760px) { .toolkit { grid-template-columns: 1fr; } }
+  .tool-row { background: var(--bg); padding: 28px 32px; }
+  .tool-row h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .tool-row .items {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .tool-row .items span {
+    color: var(--text-mute);
+    margin: 0 6px;
+  }
+
+  /* ---------- MANIFESTO ---------- */
+  .manifesto {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .manifesto p {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.4vw, 26px);
+    line-height: 1.5;
+    color: var(--text-soft);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 80;
+  }
+  .manifesto p:first-child::first-letter {
+    font-size: 3.6em;
+    float: left;
+    line-height: 0.85;
+    padding: 6px 12px 0 0;
+    color: var(--accent);
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .manifesto strong { color: var(--text); font-weight: 500; }
+  .manifesto em { color: var(--accent-soft); font-style: italic; }
+  .manifesto .sig {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-mute);
+    margin-top: 36px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    border-bottom: none;
+    padding-bottom: clamp(56px, 10vh, 100px);
+  }
+  .contact-card {
+    text-align: center;
+    padding: clamp(48px, 8vh, 96px) 24px;
+    background: linear-gradient(180deg, var(--bg-lift), var(--bg));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+  .contact-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .contact h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 360;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  .contact h2 em {
+    font-style: italic;
+    color: var(--accent-soft);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .contact p {
+    color: var(--text-soft);
+    max-width: 480px;
+    margin: 0 auto 36px;
+    font-size: 17px;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+  .cta {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 14px 22px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--text);
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cta:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .cta.primary {
+    background: var(--accent);
+    color: #1A1207;
+    border-color: var(--accent);
+    font-weight: 500;
+  }
+  .cta.primary:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent-soft);
+    color: #1A1207;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-mute);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    letter-spacing: 0.04em;
+  }
+  .footer-inner a:hover { color: var(--accent); }
+
+  /* ---------- ENTRANCE ANIMATIONS ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001s !important;
+      transition-duration: 0.001s !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark">M.Y.<span>K</span> <span style="color: var(--text-mute); margin-left: 4px;">— backend.engineer</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#projects">Systems</a>
+      <a href="#sites">Shipped</a>
+      <a href="#toolkit">Toolkit</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="hero-eyebrow reveal">
+      <span class="dot"></span>
+      Open to senior backend roles · India / Remote
+    </div>
+    <h1 class="reveal">
+      I build backend systems that<br>
+      <em>move money</em> and don't<br>
+      fall over at scale.
+    </h1>
+    <p class="hero-lede reveal">
+      <strong>Mohammad Yusuf Khan.</strong> Java engineer with ~3 years shipping Spring Boot microservices for ERP, payments, and reconciliation — the boring, load-bearing kind. On the side, I've shipped six production websites for real businesses, because the fastest way to learn what users want is to put something in front of them.
+    </p>
+    <div class="hero-meta reveal">
+      <div>Based<span>Nirman Vihar, Delhi</span></div>
+      <div>Stack<span>Java · Spring Boot · MySQL · AWS</span></div>
+      <div>Now<span>Building a BGMI streamer toolkit</span></div>
+      <div>Reach<span><a href="mailto:mohammad.yusufkhan12345@gmail.com">mohammad.yusufkhan12345@gmail.com</a></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ METRICS ============ -->
+<section id="metrics" style="padding-top: clamp(56px, 9vh, 96px); padding-bottom: clamp(56px, 9vh, 96px);">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">01 / Receipts</div>
+      <div>
+        <h2 class="section-title">Numbers from <em>production</em>.</h2>
+        <p class="section-sub">From the boring metrics that actually matter to engineering leaders — throughput, latency, reduction.</p>
+      </div>
+    </div>
+    <div class="metrics reveal">
+      <div class="metric">
+        <div class="metric-num">10K<em>/day</em></div>
+        <div class="metric-label">Transactions processed by APIs I built &amp; own</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">35<em>%</em></div>
+        <div class="metric-label">API performance gain via MySQL indexing &amp; query rewrites</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">200<em>+</em></div>
+        <div class="metric-label">REST endpoints designed, validated, documented</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">40<em>%</em></div>
+        <div class="metric-label">Duplicate code removed by enforcing SOLID &amp; patterns</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK / EXPERIENCE ============ -->
+<section id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">02 / Trajectory</div>
+      <div>
+        <h2 class="section-title">Where I've <em>shipped</em>.</h2>
+        <p class="section-sub">Two roles, both backend-heavy, both with cross-functional ownership beyond the JD.</p>
+      </div>
+    </div>
+
+    <div class="work-list">
+      <article class="work-item reveal">
+        <div class="work-date">Dec 2024<br>— Jan 2026</div>
+        <div class="work-body">
+          <h3>Software Engineer <span class="accent">at SunbaseData LLC</span></h3>
+          <div class="work-role">Remote · Software Developer</div>
+          <ul class="work-bullets">
+            <li>Designed <b>HLD &amp; LLD</b> for ERP and financial automation microservices — payments, invoices, reconciliation, inventory.</li>
+            <li>Built REST APIs handling <b>10K+ daily transactions</b> with validation, pagination, and global exception handling.</li>
+            <li>Integrated <b>QuickBooks</b> + third-party accounting APIs for automated reconciliation workflows.</li>
+            <li>Optimized MySQL queries and indexing → <b>35% API perf gain</b>; added Prometheus / Grafana / SLF4J observability.</li>
+            <li>Containerized with Docker, deployed on <b>AWS EC2/S3</b> through Jenkins CI/CD; secured with Spring Security, JWT, OAuth 2.0, RBAC.</li>
+          </ul>
+        </div>
+        <div class="work-stack">
+          <span class="chip">Spring Boot</span>
+          <span class="chip">Microservices</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">AWS</span>
+          <span class="chip">Jenkins</span>
+          <span class="chip">React</span>
+          <span class="chip">QuickBooks</span>
+        </div>
+      </article>
+
+      <article class="work-item reveal">
+        <div class="work-date">Feb 2023<br>— Nov 2024</div>
+        <div class="work-body">
+          <h3>Software Engineer <span class="accent">at Vision Softech</span></h3>
+          <div class="work-role">ITO, Delhi · Software Developer</div>
+          <ul class="work-bullets">
+            <li>Migrated <b>legacy JEE/JSP/Servlet</b> systems to a modern Spring Boot architecture without breaking production.</li>
+            <li>Built <b>200+ REST endpoints</b> with proper validation, error handling, and modular separation.</li>
+            <li>Wired Hibernate/JPA with MySQL; tuned for reporting workloads pulling heavy aggregates.</li>
+            <li>Shipped React.js admin dashboards and JWT-secured access modules.</li>
+            <li>Stood up CI/CD via Jenkins + GitLab/Bitbucket; reduced duplicate code by <b>40%</b> applying SOLID &amp; design patterns.</li>
+          </ul>
+        </div>
+        <div class="work-stack">
+          <span class="chip">Java</span>
+          <span class="chip">Spring MVC</span>
+          <span class="chip">Hibernate</span>
+          <span class="chip">JWT</span>
+          <span class="chip">React</span>
+          <span class="chip">Docker</span>
+          <span class="chip">GitLab CI</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BACKEND PROJECTS ============ -->
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">03 / Systems</div>
+      <div>
+        <h2 class="section-title">Production-grade <em>backend systems</em>.</h2>
+        <p class="section-sub">Three platforms I designed end-to-end — from architecture sketches to deployed, observable services.</p>
+      </div>
+    </div>
+
+    <div class="proj-grid reveal">
+      <div class="proj-card">
+        <div class="badge">In progress · Doctors Group</div>
+        <h3>Cloud-native <em>clinic</em> platform</h3>
+        <p>Full-stack clinic automation: patient flows, billing, inventory, notifications. Microservices behind a React UI, secured with Spring Security + OAuth 2.0, async schedulers for reminders and stock sync, deployed Dockerized on AWS with Jenkins CI/CD and Prometheus/Grafana on top.</p>
+        <div class="stack">
+          <span class="chip">Spring Boot</span>
+          <span class="chip">Microservices</span>
+          <span class="chip">React</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">AWS</span>
+          <span class="chip">RBAC</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="badge">SunbaseData LLC</div>
+        <h3>Payment <em>reconciliation</em> &amp; sync engine</h3>
+        <p>Spring Boot services that sync and reconcile payments across ERP, QuickBooks, and gateways. Multithreaded background workers and async jobs absorb 10K+ daily transactions; JPA/Hibernate tuned with care for reporting reads. Secured with JWT/OAuth2, monitored via Grafana.</p>
+        <div class="stack">
+          <span class="chip">Multithreading</span>
+          <span class="chip">Async Jobs</span>
+          <span class="chip">QuickBooks API</span>
+          <span class="chip">JPA</span>
+          <span class="chip">Docker</span>
+          <span class="chip">Grafana</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="badge">SunbaseData LLC</div>
+        <h3>Expense &amp; invoice <em>automation</em></h3>
+        <p>End-to-end expense and invoice workflow with event-driven processing, validation pipelines, and configurable approval chains. Reusable microservices, role-based modules, automated deploys via Maven/Gradle + Jenkins, documented with Swagger and tested with JUnit + Postman.</p>
+        <div class="stack">
+          <span class="chip">Event-driven</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">React</span>
+          <span class="chip">Swagger</span>
+          <span class="chip">JUnit</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="badge">Personal · Building now</div>
+        <h3>BGMI <em>streamer</em> toolkit</h3>
+        <p>A web app + companion mobile app for Indian BGMI streamers and gamers — built because the existing tooling is fragmented. Goal is to give creators a single dashboard for sensitivity configs, tournament tracking, and stream overlays. Backend in Spring Boot, mobile in React Native, designed mobile-first.</p>
+        <div class="stack">
+          <span class="chip">Spring Boot</span>
+          <span class="chip">React Native</span>
+          <span class="chip">YouTube API</span>
+          <span class="chip">In progress</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENT SITES ============ -->
+<section id="sites">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">04 / Shipped</div>
+      <div>
+        <h2 class="section-title">Six websites <em>for real businesses</em>.</h2>
+        <p class="section-sub">Restaurants, fashion, transport, gaming. Built independently — research, design, code, deploy, talk to the owner, fix what's confusing.</p>
+      </div>
+    </div>
+
+    <div class="sites-intro reveal">
+      None of these were assigned to me. <b>I found the businesses, pitched, scoped, built, and shipped.</b> The fastest engineering education I've had — because the feedback loop is the owner calling you when something breaks.
+    </div>
+
+    <div class="sites-grid reveal">
+
+      <a class="site" href="https://aogindia.com/" target="_blank" rel="noopener noreferrer">
+        <div class="site-thumb">
+          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1a1f3a"/>
+                <stop offset="100%" stop-color="#0a0e1f"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="200" fill="url(#g1)"/>
+            <circle cx="60" cy="100" r="48" fill="none" stroke="#E8A33D" stroke-width="2" opacity="0.9"/>
+            <path d="M40 100 L80 100 M60 80 L60 120" stroke="#E8A33D" stroke-width="2"/>
+            <text x="130" y="92" font-family="JetBrains Mono" font-size="11" fill="#F2EADA" letter-spacing="2">AOG</text>
+            <text x="130" y="108" font-family="Fraunces" font-size="14" fill="#F2C078" font-style="italic">Alliance of Gamers</text>
+            <text x="130" y="128" font-family="JetBrains Mono" font-size="9" fill="#7C7466" letter-spacing="1">CREATOR · NETWORK</text>
+          </svg>
+        </div>
+        <div class="site-body">
+          <div class="kind"><span>Gaming Network</span><span class="live">● LIVE</span></div>
+          <h4>AOG India</h4>
+          <p>Alliance of Gamers — a creator network platform connecting Indian gaming streamers with brands and audiences.</p>
+          <div class="visit">visit site →</div>
+        </div>
+      </a>
+
+      <a class="site" href="https://shalimar-restaurant-bdn.onrender.com/" target="_blank" rel="noopener noreferrer">
+        <div class="site-thumb">
+          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#3a1d12"/>
+                <stop offset="100%" stop-color="#1a0a05"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="200" fill="url(#g2)"/>
+            <text x="160" y="80" text-anchor="middle" font-family="Fraunces" font-size="28" fill="#F2EADA" font-style="italic">Shalimar</text>
+            <line x1="100" y1="95" x2="220" y2="95" stroke="#E8A33D" stroke-width="1"/>
+            <text x="160" y="115" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#F2C078" letter-spacing="3">RESTAURANT · BUDAUN</text>
+            <text x="160" y="145" text-anchor="middle" font-family="Fraunces" font-size="11" fill="#BDB39F" font-style="italic">The Royal Taste</text>
+          </svg>
+        </div>
+        <div class="site-body">
+          <div class="kind"><span>Restaurant</span><span class="live">● LIVE</span></div>
+          <h4>Shalimar Restaurant</h4>
+          <p>The Royal Taste of Budaun — menu, story, location, and direct ordering for a heritage restaurant.</p>
+          <div class="visit">visit site →</div>
+        </div>
+      </a>
+
+      <a class="site" href="https://rollz-n-zingz.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <div class="site-thumb">
+          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#3a2a0e"/>
+                <stop offset="100%" stop-color="#1a1305"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="200" fill="url(#g3)"/>
+            <rect x="40" y="60" width="80" height="80" rx="40" fill="#E8A33D"/>
+            <text x="80" y="108" text-anchor="middle" font-family="Fraunces" font-size="32" fill="#1a1305" font-style="italic" font-weight="600">R</text>
+            <text x="140" y="92" font-family="Fraunces" font-size="20" fill="#F2EADA">Rollz</text>
+            <text x="140" y="112" font-family="Fraunces" font-size="20" fill="#F2C078" font-style="italic">N' Zingz</text>
+            <text x="140" y="135" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="2">ORDER ONLINE</text>
+          </svg>
+        </div>
+        <div class="site-body">
+          <div class="kind"><span>Food / Ordering</span><span class="live">● LIVE</span></div>
+          <h4>Rollz N' Zingz</h4>
+          <p>Online ordering and menu site for a quick-service food brand — cart, item options, location-based delivery.</p>
+          <div class="visit">visit site →</div>
+        </div>
+      </a>
+
+      <a class="site" href="https://tiger-the-royal-signatures-pvt-ltd.onrender.com/" target="_blank" rel="noopener noreferrer">
+        <div class="site-thumb">
+          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1a1410"/>
+                <stop offset="100%" stop-color="#0a0805"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="200" fill="url(#g4)"/>
+            <text x="160" y="78" text-anchor="middle" font-family="Fraunces" font-size="22" fill="#F2EADA" letter-spacing="4">TIGER</text>
+            <line x1="80" y1="92" x2="240" y2="92" stroke="#E8A33D" stroke-width="0.5"/>
+            <text x="160" y="112" text-anchor="middle" font-family="Fraunces" font-size="11" fill="#F2C078" font-style="italic">The Royal Signatures</text>
+            <text x="160" y="142" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="3">LUXURY · PAKISTANI · FASHION</text>
+          </svg>
+        </div>
+        <div class="site-body">
+          <div class="kind"><span>Fashion E-commerce</span><span class="live">● LIVE</span></div>
+          <h4>Tiger — Royal Signatures</h4>
+          <p>Luxury Pakistani fashion brand site — collections, lookbook, product pages, inquiry flow.</p>
+          <div class="visit">visit site →</div>
+        </div>
+      </a>
+
+      <a class="site" href="https://faheem-cabs.onrender.com/" target="_blank" rel="noopener noreferrer">
+        <div class="site-thumb">
+          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0e2a1f"/>
+                <stop offset="100%" stop-color="#05140e"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="200" fill="url(#g5)"/>
+            <rect x="50" y="80" width="60" height="34" rx="6" fill="#E8A33D"/>
+            <circle cx="65" cy="120" r="6" fill="#1a1305"/>
+            <circle cx="95" cy="120" r="6" fill="#1a1305"/>
+            <text x="135" y="92" font-family="Fraunces" font-size="18" fill="#F2EADA">Faheem</text>
+            <text x="135" y="110" font-family="Fraunces" font-size="14" fill="#F2C078" font-style="italic">Cabs</text>
+            <text x="135" y="130" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="2">BUDAUN → DELHI</text>
+          </svg>
+        </div>
+        <div class="site-body">
+          <div class="kind"><span>Booking / Transport</span><span class="live">● LIVE</span></div>
+          <h4>Faheem Cabs</h4>
+          <p>Budaun-to-Delhi cab booking platform — route info, fare estimation, contact-to-book flow tuned for mobile.</p>
+          <div class="visit">visit site →</div>
+        </div>
+      </a>
+
+      <a class="site" href="https://hms-frontend-eq2r.onrender.com" target="_blank" rel="noopener noreferrer">
+        <div class="site-thumb">
+          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="g6" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1a1d2e"/>
+                <stop offset="100%" stop-color="#0a0c14"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="200" fill="url(#g6)"/>
+            <rect x="60" y="70" width="50" height="60" rx="3" fill="none" stroke="#E8A33D" stroke-width="1.5"/>
+            <line x1="68" y1="84" x2="102" y2="84" stroke="#E8A33D" stroke-width="1"/>
+            <line x1="68" y1="92" x2="102" y2="92" stroke="#E8A33D" stroke-width="1"/>
+            <line x1="68" y1="100" x2="92" y2="100" stroke="#E8A33D" stroke-width="1"/>
+            <path d="M85 108 L85 122 M78 115 L92 115" stroke="#E8A33D" stroke-width="1.5"/>
+            <text x="135" y="92" font-family="Fraunces" font-size="22" fill="#F2EADA">HMS</text>
+            <text x="135" y="115" font-family="Fraunces" font-size="11" fill="#F2C078" font-style="italic">Hospital Mgmt</text>
+            <text x="135" y="135" font-family="JetBrains Mono" font-size="8" fill="#7C7466" letter-spacing="2">SYSTEM</text>
+          </svg>
+        </div>
+        <div class="site-body">
+          <div class="kind"><span>Web Application</span><span class="live">● LIVE</span></div>
+          <h4>Hospital Management System</h4>
+          <p>Full-stack HMS — patient records, appointments, billing, role-based access. Spring Boot + React.</p>
+          <div class="visit">visit site →</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLKIT ============ -->
+<section id="toolkit">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">05 / Toolkit</div>
+      <div>
+        <h2 class="section-title">What I <em>reach for</em>.</h2>
+        <p class="section-sub">Tools I've used in production — not a checklist of buzzwords.</p>
+      </div>
+    </div>
+
+    <div class="toolkit reveal">
+      <div class="tool-row">
+        <h4>Backend</h4>
+        <div class="items">Java 8+ <span>·</span> Spring Boot <span>·</span> Spring MVC <span>·</span> Spring Security <span>·</span> Microservices <span>·</span> REST <span>·</span> JEE/Servlets <span>·</span> Multithreading <span>·</span> SLF4J</div>
+      </div>
+      <div class="tool-row">
+        <h4>Architecture</h4>
+        <div class="items">HLD <span>·</span> LLD <span>·</span> SOLID <span>·</span> Design Patterns <span>·</span> Clean Architecture <span>·</span> Event-driven <span>·</span> Async &amp; Schedulers</div>
+      </div>
+      <div class="tool-row">
+        <h4>Data</h4>
+        <div class="items">MySQL <span>·</span> JPA <span>·</span> Hibernate <span>·</span> JDBC <span>·</span> Query optimization <span>·</span> Indexing <span>·</span> Transactions</div>
+      </div>
+      <div class="tool-row">
+        <h4>Security</h4>
+        <div class="items">JWT <span>·</span> OAuth 2.0 <span>·</span> RBAC <span>·</span> CORS <span>·</span> Spring Security</div>
+      </div>
+      <div class="tool-row">
+        <h4>DevOps &amp; Cloud</h4>
+        <div class="items">AWS EC2 <span>·</span> AWS S3 <span>·</span> Docker <span>·</span> Jenkins <span>·</span> Maven <span>·</span> Gradle <span>·</span> Git/GitLab/Bitbucket</div>
+      </div>
+      <div class="tool-row">
+        <h4>Frontend &amp; Observability</h4>
+        <div class="items">React.js <span>·</span> JavaScript <span>·</span> HTML/CSS <span>·</span> Swagger <span>·</span> Prometheus <span>·</span> Grafana <span>·</span> Postman/Bruno</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-num">06 / Note</div>
+      <div>
+        <h2 class="section-title">A short note on <em>how I work</em>.</h2>
+      </div>
+    </div>
+    <div class="manifesto reveal">
+      <p>
+        Most of what I know I learned by being uncomfortable. When I joined my first job, I didn't know JPA from JDBC — I figured it out by breaking things and reading the stack traces. When I wanted to understand frontend, I didn't take a course; I went and built six websites for actual businesses, because <strong>nothing teaches you faster than a restaurant owner texting at 11pm asking why the menu won't load</strong>.
+      </p>
+      <p>
+        I'm scrappy in a specific way: I'd rather <em>research a problem until I can defend a solution</em> than wait for someone to hand me the answer. I write production Spring Boot for the day job, but I also know what it costs to find a customer, scope a project, ship it, and support it.
+      </p>
+      <p>
+        If you're a founder or tech lead and you need someone who'll own a system end-to-end without theatrics — I'm probably worth a 20-minute call.
+      </p>
+      <div class="sig">— mohammad yusuf khan · delhi · 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-card reveal">
+      <div class="contact-eyebrow">Let's build something</div>
+      <h2>Hire me, or just<br><em>say hello</em>.</h2>
+      <p>I'm open to senior backend / full-stack roles, full-time or contract. Fastest reply by email.</p>
+      <div class="cta-row">
+        <a class="cta primary" href="mailto:mohammad.yusufkhan12345@gmail.com">✦ Email me</a>
+        <a class="cta" href="tel:+917037488868">+91 70374 88868</a>
+        <a class="cta" href="https://www.linkedin.com/in/m-y-k-/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a class="cta" href="https://github.com/m-y-k" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a class="cta" href="https://leetcode.com/u/myk220897/" target="_blank" rel="noopener noreferrer">LeetCode ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 · Mohammad Yusuf Khan · Built static, hosted free.</div>
+    <div>Hand-coded HTML + CSS · <a href="#top">back to top ↑</a></div>
+  </div>
+</footer>
+
+<script>
+  // Simple intersection-observer reveal — no dependencies.
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Stagger hero reveals
+  document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i * 120) + 'ms';
+  });
+</script>
+
+</body>
+</html>
